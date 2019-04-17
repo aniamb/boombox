@@ -1,34 +1,20 @@
 import React, { Component } from 'react'
-import { Route, Switch, NavLink } from 'react-router-dom'
+//import { Route, Switch, NavLink } from 'react-router-dom'
 
-import Home from "./Home"
-import Explore from "./Explore"
-//import Tempo from "./Tempo"
+//import Valence from "./Valence"
 
-class Playlist extends Component {
+class Energy extends Component {
     render(){
         return(
-            <div className="Playlist">
+            <div className="Energy">
                 BoomBox Playlist Page
-                <ul className = "navLinks">
-                    {/* <li><NavLink to="/tempo">move to tempo</NavLink></li> */}
-                    <li><NavLink to="/explore">explore playlists</NavLink></li>
-                    <li><NavLink to="/home">home page</NavLink></li>
-                </ul>
+                    {/* <li><NavLink to="/valence">move to valence</NavLink></li>
                 <Switch>
-                    <Route path="/home" component={Home}/>
-                    {/* <Route path="/tempo" component={Tempo}/> */}
-                    <Route path="/explore" component={Explore}/>
-                </Switch>
-
-
-
-
-
-
+                    <Route path="/valence" component={Valence}/>
+                </Switch> */}
             </div>
         )
     }
 }
 
-export default Playlist
+export default Energy
