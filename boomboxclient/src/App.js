@@ -3,8 +3,7 @@ import { Route, Switch, NavLink } from 'react-router-dom'
 
 import './App.css';
 
-// import SpotifyWebApi from 'spotify-web-api-js';
-// const spotifyApi = new SpotifyWebApi();
+import SpotifyWebApi from 'spotify-web-api-js';
 
 
 import Home from './Home'
@@ -15,20 +14,23 @@ import Valence from "./Valence"
 import Tempo from "./Tempo"
 import Playlist from "./Playlist"
 
+const spotifyApi = new SpotifyWebApi();
+
 
 
 class App extends Component {
     constructor(){
     super();
       const params = this.getHashParams();
-      //console.log(params);
-      // if (token) {
-      //   spotifyApi.setAccessToken(token);
-      // }
-      // this.state = {
-      //   loggedIn: token ? true : false,
-      //   nowPlaying: { name: 'Not Checked', albumArt: '' }
-      // }
+      const token = params.access_token;
+      console.log(params);
+      if (token) {
+        spotifyApi.setAccessToken(token);
+      }
+      this.state = {
+        loggedIn: token ? true : false,
+        nowPlaying: { name: 'Not Checked'}
+      }
     }
 
   getHashParams() {
@@ -43,17 +45,16 @@ class App extends Component {
     return hashParams;
   }
 
-  // getNowPlaying(){
-  // spotifyApi.getMyCurrentPlaybackState()
-  //   .then((response) => {
-  //     this.setState({
-  //       nowPlaying: {
-  //           name: response.item.name,
-  //           albumArt: response.item.album.images[0].url
-  //         }
-  //     });
-  //   })
-  // }
+  getNowPlaying(){
+  spotifyApi.getMyCurrentPlaybackState()
+    .then((response) => {
+      this.setState({
+        nowPlaying: {
+            name: response.item.name,
+          }
+      });
+    })
+  }
 
   render() {
     return (
@@ -63,6 +64,15 @@ class App extends Component {
             <li><NavLink to="/home">Home</NavLink></li>
             <li><NavLink to="/explore">Explore</NavLink></li>
           </ul>
+          <a href='http://localhost:8888'> Login to Spotify </a>
+            <div>
+               Now Playing: { this.state.nowPlaying.name }
+            </div>
+            { this.state.loggedIn &&
+              <button onClick={() => this.getNowPlaying()}>
+              Check Now Playing
+              </button>
+            }
         </div>
         <Switch>
           <Route path="/home" component={Home}/>
