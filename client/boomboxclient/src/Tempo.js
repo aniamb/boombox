@@ -1,22 +1,23 @@
 import React, { Component } from 'react'
 import { Route, Switch, NavLink } from 'react-router-dom'
 
-import Dance from "./Dance"
+import Home from "./Home"
 import Explore from "./Explore"
+import Playlist from "./Playlist"
 
-class Home extends Component {
+class Tempo extends Component {
     render(){
         return(
-            <div className="Home">
-                BoomBox Home Page
+            <div className="Tempo">
+                BoomBox Tempo Page
                 <ul className = "navLinks">
-                    <li><NavLink to="/dance">move to dance</NavLink></li>
+                    <li><NavLink to="/playlist">move to playlist</NavLink></li>
                     <li><NavLink to="/explore">explore playlists</NavLink></li>
                     <li><NavLink to="/home">home page</NavLink></li>
                 </ul>
                 <Switch>
                     <Route path="/home" component={Home}/>
-                    <Route path="/dance" component={Dance}/>
+                    <Route path="/playlist" component={Playlist}/>
                     <Route path="/explore" component={Explore}/>
                 </Switch>
 
@@ -30,4 +31,4 @@ class Home extends Component {
     }
 }
 
-export default Home
+export default Tempo
