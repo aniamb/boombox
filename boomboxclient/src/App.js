@@ -15,6 +15,7 @@ import Tempo from "./Tempo"
 import Playlist from "./Playlist"
 
 const spotifyApi = new SpotifyWebApi();
+var loggedIn = 0;
 
 
 
@@ -24,13 +25,13 @@ class App extends Component {
       const params = this.getHashParams();
       const token = params.access_token;
       console.log(params);
-      if (token) {
-        spotifyApi.setAccessToken(token);
-      }
-      this.state = {
-        loggedIn: token ? true : false,
-        nowPlaying: { name: 'Not Checked'}
-      }
+      // if (token) {
+      //   spotifyApi.setAccessToken(token);
+      // }
+      // this.state = {
+      //   loggedIn: token ? true : false,
+      //   nowPlaying: { name: 'Not Checked'}
+      // }
     }
 
   getHashParams() {
@@ -45,34 +46,33 @@ class App extends Component {
     return hashParams;
   }
 
-  getNowPlaying(){
-  spotifyApi.getMyCurrentPlaybackState()
-    .then((response) => {
-      this.setState({
-        nowPlaying: {
-            name: response.item.name,
-          }
-      });
-    })
-  }
+  // getNowPlaying(){
+  // spotifyApi.getMyCurrentPlaybackState()
+  //   .then((response) => {
+  //     this.setState({
+  //       nowPlaying: {
+  //           name: response.item.name,
+  //         }
+  //     });
+  //   })
+  // }
+
+
 
   render() {
+
     return (
       <div className="App">
         <div className = "links">
           <ul className = "navLinks">
             <li><NavLink to="/home">Home</NavLink></li>
             <li><NavLink to="/explore">Explore</NavLink></li>
+
+              <a href='http://localhost:8888'> Login to Spotify </a>
+              <br></br>
+              <a href='https://www.spotify.com/logout/'> Logout </a>
+
           </ul>
-          <a href='http://localhost:8888'> Login to Spotify </a>
-            <div>
-               Now Playing: { this.state.nowPlaying.name }
-            </div>
-            { this.state.loggedIn &&
-              <button onClick={() => this.getNowPlaying()}>
-              Check Now Playing
-              </button>
-            }
         </div>
         <Switch>
           <Route path="/home" component={Home}/>
