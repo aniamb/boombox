@@ -8,7 +8,7 @@ class Home extends Component {
     render(){
         return(
             <div className="Home">
-                BoomBox Home Page
+                BoomBox Home test 124 Page
                     <li><NavLink to="/dance">move to dance</NavLink></li>
                 <Switch>
                     <Route path="/dance" component={Dance}/>
