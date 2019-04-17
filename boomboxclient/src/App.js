@@ -71,8 +71,8 @@ class App extends Component {
             <li><NavLink to="/explore">Explore</NavLink></li>
 
               <a href='http://localhost:8888'> Login to Spotify </a>
-              <br></br>
-              <a href='https://accounts.spotify.com/en/logout'> Logout </a>
+
+
 
           </ul>
         </div>
