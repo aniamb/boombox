@@ -9,6 +9,9 @@ class Home extends Component {
         return(
             <div className="Home">
                 BoomBox Home Page
+                <div className='App'>
+                    <a href='http://localhost:8888'> Login to Spotify </a>
+                </div>
                     <li><NavLink to="/dance">move to dance</NavLink></li>
                 <Switch>
                     <Route path="/dance" component={Dance}/>
