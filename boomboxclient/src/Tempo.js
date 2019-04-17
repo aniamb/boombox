@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 import { Route, Switch, NavLink } from 'react-router-dom'
 
-import Playlist from "./Playlist"
+import Save from "./Save"
 
 class Tempo extends Component {
     render(){
         return(
             <div className="Tempo">
                 BoomBox Tempo Page
-                    <li><NavLink to="/playlist">move to playlist</NavLink></li>
+                    <li><NavLink to="/save">move to save</NavLink></li>
                 <Switch>
-                    <Route path="/playlist" component={Playlist}/>
+                    <Route path="/save" component={Save}/>
                 </Switch>
             </div>
         )
