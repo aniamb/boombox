@@ -1,6 +1,8 @@
-import firebase from 'firebase'
+import firebase from 'firebase/app'
+import 'firebase/database'
+import Rebase from 're-base'
 // Initialize Firebase
-var config = {
+const config = {
     apiKey: "AIzaSyD2-jP3vyKiZDGWu3IsiKTaagdx0R5wjDo",
     authDomain: "boombox-1c217.firebaseapp.com",
     databaseURL: "https://boombox-1c217.firebaseio.com",
@@ -8,4 +10,7 @@ var config = {
     storageBucket: "",
     messagingSenderId: "129261596427"
   };
-  firebase.initializeApp(config);
+//   const app = 
+firebase.initializeApp(config);
+  export default firebase
+  //export default Rebase.createClass(app.database())

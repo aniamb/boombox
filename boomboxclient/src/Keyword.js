@@ -3,6 +3,7 @@ import { Redirect } from 'react-router'
 
 import Dance from "./Dance"
 import Playlist from "./Playlist"
+import base from './base'
 // import Explore from "./Explore"
 
 class Keyword extends Component {
@@ -13,6 +14,7 @@ class Keyword extends Component {
             isSubmitted: false,
         }
     }
+
     handleChange = (ev)  => {
         this.setState({keyword: ev.target.value})
     }
@@ -20,8 +22,18 @@ class Keyword extends Component {
        ev.preventDefault()
        console.log(`Submitted Keyword: ${this.state.keyword}`)
        this.setState({isSubmitted: true})
+       const itemsRef = base.database().ref('keyword');
+
+       const item = {
+           keyword: this.state.keyword,
+        //    isSubmitted: this.state.isSubmitted
+       }
+      itemsRef.push(item);
+    //    base.child("cool").setValue(item)
       // this.props.history.push(`/dance`)
     }
+
+
     render(){
         return(
             <div className="Keyword">

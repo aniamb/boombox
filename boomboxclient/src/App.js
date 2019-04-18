@@ -15,6 +15,7 @@ import Valence from "./Valence"
 import Tempo from "./Tempo"
 import Save from "./Save"
 import Playlist from "./Playlist"
+import base from "./base"
 
 const spotifyApi = new SpotifyWebApi();
 var loggedIn = 0;
