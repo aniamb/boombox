@@ -18,7 +18,7 @@ class Keyword extends Component {
     }
     handleSubmit = (ev) => {
        ev.preventDefault()
-       console.log(`from home with keyword ${this.state.keyword}`)
+       console.log(`Submitted Keyword: ${this.state.keyword}`)
        this.setState({isSubmitted: true})
       // this.props.history.push(`/dance`)
     }

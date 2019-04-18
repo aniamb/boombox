@@ -12,7 +12,7 @@ class Playlist extends Component {
         }
     }
     render(){
-        console.log(`${this.state.key}`)
+        console.log(`printed from playlsit: ${this.state.key}`)
         return(
             <div className="Playlist">
                 BoomBox Playlist Page
