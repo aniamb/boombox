@@ -15,7 +15,8 @@ import Tempo from "./Tempo"
 import Playlist from "./Playlist"
 
 const spotifyApi = new SpotifyWebApi();
-var loggedIn = 0;
+
+
 
 
 
@@ -25,13 +26,12 @@ class App extends Component {
       const params = this.getHashParams();
       const token = params.access_token;
       console.log(params);
-      // if (token) {
-      //   spotifyApi.setAccessToken(token);
-      // }
-      // this.state = {
-      //   loggedIn: token ? true : false,
-      //   nowPlaying: { name: 'Not Checked'}
-      // }
+      if (token) {
+        spotifyApi.setAccessToken(token);
+      }
+      this.state = {
+        loggedIn: token ? true : false,
+      }
     }
 
   getHashParams() {
@@ -67,7 +67,9 @@ class App extends Component {
           <ul className = "navLinks">
             <li><NavLink to="/home">Home</NavLink></li>
             <li><NavLink to="/explore">Explore</NavLink></li>
-
+            <div>
+      
+            </div>
               <a href='http://localhost:8888'> Login to Spotify </a>
               <br></br>
               <a href='https://www.spotify.com/logout/'> Logout </a>
