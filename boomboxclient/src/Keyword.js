@@ -23,7 +23,7 @@ class Keyword extends Component {
        console.log(`Submitted Keyword: ${this.state.keyword}`)
        this.setState({isSubmitted: true})
        const itemsRef = base.database().ref('keyword');
-
+        // base.database().child(this.state.keyword).setValue("test");
        const item = {
            keyword: this.state.keyword,
         //    isSubmitted: this.state.isSubmitted
@@ -31,6 +31,7 @@ class Keyword extends Component {
       itemsRef.push(item);
     //    base.child("cool").setValue(item)
       // this.props.history.push(`/dance`)
+      
     }
 
 
