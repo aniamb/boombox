@@ -3,10 +3,18 @@ import React, { Component } from 'react'
 
 //import Valence from "./Valence"
 
-class Energy extends Component {
+class Playlist extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            key: this.props.keyword,
+            isSubmitted: false,
+        }
+    }
     render(){
+        console.log(`${this.state.key}`)
         return(
-            <div className="Energy">
+            <div className="Playlist">
                 BoomBox Playlist Page
                     {/* <li><NavLink to="/valence">move to valence</NavLink></li>
                 <Switch>
@@ -17,4 +25,4 @@ class Energy extends Component {
     }
 }
 
-export default Energy
+export default Playlist
