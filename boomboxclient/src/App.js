@@ -8,11 +8,14 @@ import SpotifyWebApi from 'spotify-web-api-js';
 
 import Home from './Home'
 import Explore from './Explore'
+import Keyword from './Keyword'
 import Dance from './Dance'
 import Energy from './Energy'
 import Valence from "./Valence"
 import Tempo from "./Tempo"
+import Save from "./Save"
 import Playlist from "./Playlist"
+import base from "./base"
 
 const spotifyApi = new SpotifyWebApi();
 var loggedIn = 0;
@@ -78,11 +81,13 @@ class App extends Component {
         <Switch>
           <Route path="/home" component={Home}/>
           <Route path="/explore" component={Explore}/>
+          <Route path="/keyword" component={Keyword}/>
           <Route path="/dance" component={Dance}/>
           <Route path="/energy" component={Energy}/>
           <Route path="/energy" component={Energy}/>
           <Route path="/valence" component={Valence}/>
           <Route path="/tempo" component={Tempo}/>
+          <Route path="/save" component={Save}/>
           <Route path="/playlist" component={Playlist}/>
           <Route render= {() =>
             <Home />
