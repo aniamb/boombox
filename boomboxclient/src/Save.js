@@ -50,12 +50,10 @@ class Save extends Component {
                                 onChange={this.handleChange.bind(this)}
                             />
                         </div>
-                    <div>
-
+    
                         <button type="submit">Next </button>
 
 
-                    </div>
                    </form>
 
 
