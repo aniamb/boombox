@@ -3,7 +3,8 @@ import React, { Component } from 'react'
 
 //import Valence from "./Valence"
 
-import {data} from "./data"
+//import {keyData} from "./Keyword"
+// import Keyword from "./Keyword"
 import base from "./base"
 
 class Playlist extends Component {
@@ -38,6 +39,7 @@ class Playlist extends Component {
 
     render(){
         console.log(`printed from playlsit: ${this.state.key}`)
+        // console.log(`pls god let this work PLEASE: ${Keyword.keyData}`)
         // console.log(`god pls work: ${data.danceLevel}`)
         return(
             <div className="Playlist">

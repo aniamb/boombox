@@ -6,6 +6,8 @@ import Playlist from "./Playlist"
 import base from './base'
 // import Explore from "./Explore"
 
+
+
 class Keyword extends Component {
     constructor(props) {
         super(props);
@@ -14,6 +16,9 @@ class Keyword extends Component {
             isSubmitted: false,
         }
     }
+    // keyData = {
+    //     keyData: this.state.keyword,
+    // }
 
     handleChange = (ev)  => {
         this.setState({keyword: ev.target.value})
