@@ -4,6 +4,7 @@ import { Redirect } from 'react-router'
 
 import Energy from "./Energy"
 // import Explore from "./Explore"
+import Data from "./data"
 
 class Dance extends Component {
     constructor(props){
@@ -45,6 +46,7 @@ class Dance extends Component {
                    </form>
                     {/* <li><NavLink to="/energy">move to energy</NavLink></li>
                     <Route path="/energy" component={Energy}/> */}
+                    {/* <Data danceLevel={this.state.danceLevel} /> */}
                     {this.state.isSubmitted && <Redirect to={{
                     pathname: '/energy',
                     danceLevel: this.state.danceLevel,

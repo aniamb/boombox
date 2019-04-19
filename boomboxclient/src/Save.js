@@ -26,6 +26,7 @@ class Save extends Component {
         ev.preventDefault()
         console.log(`Submitted Privacy: ${this.state.privacy}`)
         this.setState({isSubmitted: true})
+        // window.location.assign("localhost:8888")
        // this.props.history.push(`/dance`)
      }
     render(){
