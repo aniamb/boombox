@@ -22,13 +22,20 @@ class Keyword extends Component {
        ev.preventDefault()
        console.log(`Submitted Keyword: ${this.state.keyword}`)
        this.setState({isSubmitted: true})
-       const itemsRef = base.database().ref('keyword');
-        // base.database().child(this.state.keyword).setValue("test");
-       const item = {
-           keyword: this.state.keyword,
-        //    isSubmitted: this.state.isSubmitted
-       }
-      itemsRef.push(item);
+    //    const itemsRef = base.database().ref(this.state.keyword);
+    //    const itemsRef = base.database().ref('keyword');
+        const usersRef = base.database().ref('users');
+        //need to change id to be username logged in
+        usersRef.child(this.state.keyword).set({
+            keyword: this.state.keyword,
+        })  
+    // base.database().child(this.state.keyword).setValue("test");
+    //    const user = {
+    //        keyword: this.state.keyword,
+    //       isSubmitted: this.state.isSubmitted
+    //    }
+    //   usersRef.push(user);
+    // itemsRef.update(item);
     //    base.child("cool").setValue(item)
       // this.props.history.push(`/dance`)
       

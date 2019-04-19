@@ -18,7 +18,8 @@ class Playlist extends Component {
 
     componentDidMount() {
         //print out values in database
-        const itemsRef = base.database().ref('keyword');
+        //need to pass keyword prop to access
+        const itemsRef = base.database().ref('users');
         itemsRef.on('value', (snapshot) => {
           let items = snapshot.val();
           let newState = [];
@@ -26,7 +27,6 @@ class Playlist extends Component {
             newState.push({
               keyword: items[item].keyword,
             });
-            console.log(`yeeeeee ${items[item].keyword}`)
           }
           this.setState({
             allItems: newState,
