@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 
-import Dance from "./Dance"
+// import Dance from "./Dance"
 import Playlist from "./Playlist"
 import base from './base'
 // import Explore from "./Explore"
