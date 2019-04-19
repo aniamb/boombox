@@ -1,6 +1,6 @@
 import firebase from 'firebase/app'
 import 'firebase/database'
-import Rebase from 're-base'
+//import Rebase from 're-base'
 // Initialize Firebase
 const config = {
     apiKey: "AIzaSyD2-jP3vyKiZDGWu3IsiKTaagdx0R5wjDo",
@@ -10,7 +10,7 @@ const config = {
     storageBucket: "",
     messagingSenderId: "129261596427"
   };
-//   const app = 
+//   const app =
 firebase.initializeApp(config);
   export default firebase
   //export default Rebase.createClass(app.database())

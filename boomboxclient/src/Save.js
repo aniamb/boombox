@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Route, Switch, NavLink } from 'react-router-dom'
-import Select from 'react-select'
+//import Select from 'react-select'
 import { Redirect } from 'react-router'
-
+import { Link } from 'react-router-dom'
 import Playlist from "./Playlist"
 // import Explore from "./Explore"
 
@@ -26,8 +26,7 @@ class Save extends Component {
         ev.preventDefault()
         console.log(`Submitted Privacy: ${this.state.privacy}`)
         this.setState({isSubmitted: true})
-        // window.location.assign("localhost:8888")
-       // this.props.history.push(`/dance`)
+
      }
     render(){
         return(
@@ -44,7 +43,7 @@ class Save extends Component {
                 </h3>
                 <form onSubmit={this.handleSubmit}>
                         <div>
-                            <input 
+                            <input
                                 type = "text"
                                 value={this.state.privacy}
                                 onChange={this.handleChange.bind(this)}

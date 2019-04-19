@@ -12,6 +12,8 @@ var request = require('request'); // "Request" library
 var cors = require('cors');
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
+var userId;
+var displayName;
 
 var client_id = '5bdc26b569de48d388e9a279f91cdc8a'; // Your client id
 var client_secret = '979e281a27854522852cc89f56f86daf'; // Your secret
@@ -102,7 +104,10 @@ app.get('/callback', function(req, res) {
 
         // use the access token to access the Spotify Web API
         request.get(options, function(error, response, body) {
+          console.log("HELLO WORLD");
           console.log(body);
+          userId = body.id;
+          displayName = body.display_name;
         });
 
         // we can also pass the token to the browser to make requests from there
