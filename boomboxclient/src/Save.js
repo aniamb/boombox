@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { Route, Switch, NavLink } from 'react-router-dom'
+// import { Route, Switch, NavLink } from 'react-router-dom'
 //import Select from 'react-select'
 import { Redirect } from 'react-router'
-import { Link } from 'react-router-dom'
-import Playlist from "./Playlist"
+// import { Link } from 'react-router-dom'
+// import Playlist from "./Playlist"
 // import Explore from "./Explore"
 
 const options = [
@@ -21,11 +21,13 @@ class Save extends Component {
     }
     handleChange = (ev)  => {
         this.setState({privacy: ev.target.value})
+        localStorage.setItem("privacyData", this.state.privacy)
     }
     handleSubmit = (ev) => {
         ev.preventDefault()
         console.log(`Submitted Privacy: ${this.state.privacy}`)
         this.setState({isSubmitted: true})
+        // localStorage.setItem("privacyData", this.state.privacy)
 
      }
     render(){

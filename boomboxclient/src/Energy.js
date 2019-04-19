@@ -19,6 +19,7 @@ class Energy extends Component {
        ev.preventDefault()
        console.log(`Submitted Energy Level: ${this.state.energyLevel}`)
        this.setState({isSubmitted: true})
+       localStorage.setItem("energyData", this.state.energyLevel)
       // this.props.history.push(`/dance`)
     }
     render(){

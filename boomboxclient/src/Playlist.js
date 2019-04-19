@@ -11,12 +11,26 @@ class Playlist extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            key: this.props.keyword,
+            key: '',
+            danceLevel: '',
+            energyLevel: '',
+            valenceLevel: '',
+            tempoLevel: '',
+            privacyLevel: '',
             isSubmitted: false,
             allItems: [],
         }
     }
+    //componentwillMount
+    componentWillMount() {
+        this.setState({key: localStorage.getItem('keyData')})
+        this.setState({danceLevel: localStorage.getItem('danceData')})
+        this.setState({energyLevel: localStorage.getItem('energyData')})
+        this.setState({valenceLevel: localStorage.getItem('valenceData')})
+        this.setState({tempoLevel: localStorage.getItem('tempoData')})
+        this.setState({privacyLevel: localStorage.getItem('privacyData')})
 
+    }
     componentDidMount() {
         //print out values in database
         //need to pass keyword prop to access
@@ -38,7 +52,24 @@ class Playlist extends Component {
 
 
     render(){
-        console.log(`printed from playlsit: ${this.state.key}`)
+        if(this.state.key!=null){
+        console.log(`localStorage key: ${this.state.key}`)
+        }
+            console.log(`localStorage dance: ${this.state.danceLevel}`)
+        if(this.state.energyLevel!=null){
+            console.log(`localStorage energy: ${this.state.energyLevel}`)
+        }
+        if(this.state.valenceLevel!=null){
+            console.log(`localStorage valence: ${this.state.valenceLevel}`)
+        }
+        if(this.state.tempoLevel!=null){
+            console.log(`localStorage tempo: ${this.state.tempoLevel}`)
+        }
+        if(this.state.privacyLevel!=null){
+            console.log(`localStorage priv: ${this.state.privacyLevel}`)
+        }
+
+
         // console.log(`pls god let this work PLEASE: ${Keyword.keyData}`)
         // console.log(`god pls work: ${data.danceLevel}`)
         return(

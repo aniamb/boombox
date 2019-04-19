@@ -21,6 +21,7 @@ class Dance extends Component {
        ev.preventDefault()
        console.log(`Submitted Dance Level: ${this.state.danceLevel}`)
        this.setState({isSubmitted: true})
+       localStorage.setItem("danceData", this.state.danceLevel)
       // this.props.history.push(`/dance`)
     }
 
