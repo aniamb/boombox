@@ -10,7 +10,7 @@ class Dance extends Component {
     constructor(props){
         super(props);
         this.state = {
-            danceLevel: 0,
+            danceLevel: '',
             isSubmitted: false,
         }
     }
@@ -29,12 +29,12 @@ class Dance extends Component {
         console.log(`Keyword from "Keyword": ${this.props.location.keyword}`)
         return(
             <div className="Dance">
-                <h3>Type in a number from 1 to 10 depending 
+                <h3>Type in a number from 1 to 10 depending
                     on how "danceable" you want the songs
                 </h3>
                 <form onSubmit={this.handleSubmit}>
                         <div>
-                            <input 
+                            <input
                                 type = "text"
                                 value={this.state.danceLevel}
                                 onChange={this.handleChange.bind(this)}
