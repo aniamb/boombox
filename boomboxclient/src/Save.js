@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Route, Switch, NavLink } from 'react-router-dom'
-import Select from 'react-select'
+//import Select from 'react-select'
 import { Redirect } from 'react-router'
 
 import Playlist from "./Playlist"
@@ -43,7 +43,7 @@ class Save extends Component {
                 </h3>
                 <form onSubmit={this.handleSubmit}>
                         <div>
-                            <input 
+                            <input
                                 type = "text"
                                 value={this.state.privacy}
                                 onChange={this.handleChange.bind(this)}
