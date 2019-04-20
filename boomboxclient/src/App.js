@@ -36,9 +36,9 @@ class App extends Component {
       //   nowPlaying: { name: 'Not Checked'}
       // }
     }
-    componentWillMount (){
-      localStorage.clear();
-  }
+  //   componentWillMount (){
+  //     localStorage.clear();
+  // }
   getHashParams() {
     var hashParams = {};
     var e, r = /([^&;=]+)=?([^&;]*)/g,
