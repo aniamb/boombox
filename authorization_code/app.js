@@ -108,6 +108,7 @@ app.get('/callback', function(req, res) {
           console.log(body);
           userId = body.id;
           displayName = body.display_name;
+         // window.localStorage.setItem("userID", userId);
         });
 
         // we can also pass the token to the browser to make requests from there

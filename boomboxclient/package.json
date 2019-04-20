@@ -1,9 +1,12 @@
 {
   "name": "boomboxclient",
   "version": "0.1.0",
+  "homepage": "https://boombox-1c217.firebaseapp.com",
   "private": true,
   "dependencies": {
     "firebase": "^5.9.4",
+    "firebase-tools": "^6.7.0",
+    "global": "^4.3.2",
     "re-base": "^4.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -16,6 +19,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "deploy": "firebase deploy",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
