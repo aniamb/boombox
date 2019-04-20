@@ -17,11 +17,13 @@ class Save extends Component {
         this.state = {
             privacy: null,
             isSubmitted: false,
+            selectedValuePlaceholder: "Select",
         }
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleChange = (privacy)  => {
         //console.log(`test123 ${privacy.value}`)
+        this.setState({selectedValuePlaceholder: privacy.label})
         this.setState({
             privacy: privacy.value}, function() {
                localStorage.setItem("privacyData", this.state.privacy);
@@ -48,6 +50,7 @@ class Save extends Component {
                 <Select 
                     options={options}
                     value = {privacy}
+                    placeholder = {this.state.selectedValuePlaceholder}
                     onChange={this.handleChange}
                />
                 </div>
