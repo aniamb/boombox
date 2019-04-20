@@ -21,13 +21,22 @@ class Tempo extends Component {
        ev.preventDefault()
       // console.log(`Submitted Temp: ${this.state.tempo}`)
        this.setState({isSubmitted: true})
-       localStorage.setItem("tempoData", this.state.tempo/10)
+       localStorage.setItem("tempoData", this.state.tempo)
 
       // this.props.history.push(`/dance`)
     }
     render(){
+        //******* TEMPO NOT MEASURED IN SINGLE NUMBER MEASURED IN BPM **************/
        // console.log(`ValenceLevel from "Valence": ${this.props.location.valenceLevel}`)
-        return(
+       const tempoLabels = {
+        0: 'sloooooowww it down',
+        10: 'Can\'t keep up',
+        } 
+        const sliderStyle = {
+        width: '50%',
+        margin: 'auto',
+        } 
+       return(
             <div className="Tempo">
             <h3>Type in a number from 1 to 10 depending 
                    on how fast you want the songs
@@ -44,13 +53,14 @@ class Tempo extends Component {
                         <button type="submit">Next </button>
                     </div>
                    </form>                   */}
-            <div className="slider orientation-reversed">
-                    <div className = "slider-group">
+            <div className="slider orientation-reversed custom-labels">
+                    <div className = "slider-group" style = {sliderStyle}>
                         <div className = "slider-horizontal">
                             <Slider
                                 min = {0}
                                 max = {10}
                                 value = {this.state.tempo}
+                                labels = {tempoLabels}
                                 orientation = 'horizontal'
                                 onChange = {this.handleChange}
                             />

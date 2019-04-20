@@ -31,7 +31,15 @@ class Dance extends Component {
     render(){
         // console.log(`${this.props.location.keyword}`)
        // console.log(`Keyword from "Keyword": ${this.props.location.keyword}`)
-        return(
+       const danceLabels = {
+           0: 'Nah don\'t feel like dancing',
+           10: 'Get me on my feet!'
+       } 
+       const sliderStyle = {
+           width: '50%',
+           margin: 'auto',
+       }
+       return(
             <div className="Dance">
                 <h3>Type in a number from 1 to 10 depending
                     on how "danceable" you want the songs
@@ -49,13 +57,14 @@ class Dance extends Component {
                     </div>
                    </form> */}
 
-                <div className="slider orientation-reversed">
-                    <div className = "slider-group">
+                <div className="slider orientation-reversed custom-labels" >
+                    <div className = "slider-group" style={sliderStyle}>
                         <div className = "slider-horizontal">
                             <Slider
                                 min = {0}
                                 max = {10}
                                 value = {this.state.danceLevel}
+                                labels = {danceLabels}
                                 orientation = 'horizontal'
                                 onChange = {this.handleChange}
                             />

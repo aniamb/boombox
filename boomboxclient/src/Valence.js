@@ -26,7 +26,15 @@ class Valence extends Component {
     }
     render(){
        // console.log(`EnergyLevel from "Energy": ${this.props.location.energyLevel}`)
-        return(
+       const valenceLabels = {
+        0: 'sadboi hours',
+        10: 'happyboi hours'
+    } 
+    const sliderStyle = {
+        width: '50%',
+        margin: 'auto',
+    }
+       return(
             <div className="Valence">
                 <h3>Type in a number from 1 to 10 depending 
                     on how "positive" you want the songs
@@ -43,13 +51,14 @@ class Valence extends Component {
                         <button type="submit">Next </button>
                     </div>
                    </form> */}
-                <div className="slider orientation-reversed">
-                    <div className = "slider-group">
+                <div className="slider orientation-reversed custom-labels">
+                    <div className = "slider-group" style = {sliderStyle}>
                         <div className = "slider-horizontal">
                             <Slider
                                 min = {0}
                                 max = {10}
                                 value = {this.state.valenceLevel}
+                                labels = {valenceLabels}
                                 orientation = 'horizontal'
                                 onChange = {this.handleChange}
                             />

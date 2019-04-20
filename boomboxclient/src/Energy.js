@@ -27,7 +27,16 @@ class Energy extends Component {
     }
     render(){
        // console.log(`DanceLevel from "Dance": ${this.props.location.danceLevel}`)
-        return(
+       const energyLabels = {
+        0: 'Kickback Vibes',
+        10: 'BANGER Vibes!'
+    } 
+    const sliderStyle = {
+        width: '50%',
+        margin: 'auto',
+    }
+       
+       return(
             <div className="Energy">
                 <h3>Type in a number from 1 to 10 depending 
                     on how energetic you want the songs
@@ -44,13 +53,14 @@ class Energy extends Component {
                         <button type="submit">Next </button>
                     </div>
                    </form> */}
-                    <div className="slider orientation-reversed">
-                        <div className = "slider-group">
+                    <div className="slider orientation-reversed custome-labels">
+                        <div className = "slider-group" style={sliderStyle}>
                             <div className = "slider-horizontal">
                                 <Slider
                                     min = {0}
                                     max = {10}
                                     value = {this.state.energyLevel}
+                                    labels = {energyLabels}
                                     orientation = 'horizontal'
                                     onChange = {this.handleChange}
                                 />
