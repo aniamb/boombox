@@ -54,6 +54,7 @@ class Keyword extends Component {
                                 type = "text"
                                 value={this.state.keyword}
                                 onChange={this.handleChange.bind(this)}
+                                autoFocus
                             />
                         </div>
                     <div>
