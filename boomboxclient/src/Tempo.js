@@ -19,6 +19,8 @@ class Tempo extends Component {
        ev.preventDefault()
        console.log(`Submitted Temp: ${this.state.tempo}`)
        this.setState({isSubmitted: true})
+       localStorage.setItem("tempoData", this.state.tempo)
+
       // this.props.history.push(`/dance`)
     }
     render(){

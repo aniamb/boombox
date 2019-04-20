@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 
-import Dance from "./Dance"
+// import Dance from "./Dance"
 import Playlist from "./Playlist"
 import base from './base'
 // import Explore from "./Explore"
-
-
 
 class Keyword extends Component {
     constructor(props) {
@@ -43,9 +41,8 @@ class Keyword extends Component {
     // itemsRef.update(item);
     //    base.child("cool").setValue(item)
       // this.props.history.push(`/dance`)
-      
+      localStorage.setItem("keyData", this.state.keyword)
     }
-
 
     render(){
         return(

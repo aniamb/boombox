@@ -7,7 +7,9 @@ import Keyword from './Keyword'
 
 class Home extends Component {
 
-    
+   componentWillMount(){
+       localStorage.clear()
+   } 
     render(){
         return(
             <div className="Home">

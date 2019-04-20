@@ -19,6 +19,7 @@ class Valence extends Component {
        ev.preventDefault()
        console.log(`Submitted Valence Level: ${this.state.valenceLevel}`)
        this.setState({isSubmitted: true})
+       localStorage.setItem("valenceData", this.state.valenceLevel)
       // this.props.history.push(`/dance`)
     }
     render(){

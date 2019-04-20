@@ -4,6 +4,10 @@ import React, { Component } from 'react'
 // import Home from "./Home"
 
 class Explore extends Component {
+    componentWillMount (){
+        localStorage.clear();
+    }
+
     render(){
         return(
             <div className="Explore">
