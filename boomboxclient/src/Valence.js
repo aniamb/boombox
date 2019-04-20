@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
-import { Route, Switch, NavLink } from 'react-router-dom'
+// import { Route, Switch, NavLink } from 'react-router-dom'
 import { Redirect } from 'react-router'
+import  Slider  from 'react-rangeslider'
+import 'react-rangeslider/lib/index.css'
 
-import Tempo from "./Tempo"
+// import Tempo from "./Tempo"
 
 class Valence extends Component {
     constructor(props){
@@ -12,24 +14,24 @@ class Valence extends Component {
             isSubmitted: false,
         }
     }
-    handleChange = (ev)  => {
-        this.setState({valenceLevel: ev.target.value})
+    handleChange = (value)  => {
+        this.setState({valenceLevel: value})
     }
     handleSubmit = (ev) => {
        ev.preventDefault()
-       console.log(`Submitted Valence Level: ${this.state.valenceLevel}`)
+   //console.log(`Submitted Valence Level: ${this.state.valenceLevel}`)
        this.setState({isSubmitted: true})
-       localStorage.setItem("valenceData", this.state.valenceLevel)
+       localStorage.setItem("valenceData", this.state.valenceLevel/10)
       // this.props.history.push(`/dance`)
     }
     render(){
-        console.log(`EnergyLevel from "Energy": ${this.props.location.energyLevel}`)
+       // console.log(`EnergyLevel from "Energy": ${this.props.location.energyLevel}`)
         return(
             <div className="Valence">
                 <h3>Type in a number from 1 to 10 depending 
                     on how "positive" you want the songs
                 </h3>
-                <form onSubmit={this.handleSubmit}>
+                {/* <form onSubmit={this.handleSubmit}>
                         <div>
                             <input 
                                 type = "text"
@@ -40,7 +42,26 @@ class Valence extends Component {
                     <div>
                         <button type="submit">Next </button>
                     </div>
-                   </form>
+                   </form> */}
+                <div className="slider orientation-reversed">
+                    <div className = "slider-group">
+                        <div className = "slider-horizontal">
+                            <Slider
+                                min = {0}
+                                max = {10}
+                                value = {this.state.valenceLevel}
+                                orientation = 'horizontal'
+                                onChange = {this.handleChange}
+                            />
+                            <div className = 'value'>{this.state.valenceLevel}</div>
+                        </div>
+                     </div>
+                </div>
+                <form  onSubmit= {this.handleSubmit} >
+                <button type="submit">Next </button>
+                </form>    
+                    
+            
                     {/* <li><NavLink to="/tempo">move to tempo</NavLink></li>
                     <Route path="/tempo" component={Tempo}/> */}
                     {this.state.isSubmitted && <Redirect to={{
