@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 // import { Route, Switch, NavLink } from 'react-router-dom'
 import { Redirect } from 'react-router'
 import  Slider  from 'react-rangeslider'
+// import base from "./base"
 import 'react-rangeslider/lib/index.css'
 
 // import Energy from "./Energy"
@@ -24,6 +25,10 @@ class Dance extends Component {
        ev.preventDefault()
       // console.log(`Submitted Dance Level: ${this.state.danceLevel}`)
        this.setState({isSubmitted: true})
+    //    const usersRef = base.database().ref('users');
+    //     usersRef.child(localStorage.getItem('keyData')).set({
+    //         danceLevel: this.state.danceLevel,
+    //     })
        localStorage.setItem("danceData", this.state.danceLevel/10)
       // this.props.history.push(`/dance`)
     }
