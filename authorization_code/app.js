@@ -110,6 +110,11 @@ app.get('/callback', function(req, res) {
           displayName = body.display_name;
          // window.localStorage.setItem("userID", userId);
         });
+        
+         //pass username to client
+        app.get('/playlist',function(req,res){
+           res.send({username: userId})
+         })
 
         // we can also pass the token to the browser to make requests from there
         res.redirect('http://localhost:3000/playlist/#' +
