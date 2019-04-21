@@ -56,7 +56,7 @@ class Save extends Component {
                 </div>
                 
                 <form  onSubmit= {this.handleSubmit} >
-                <button type="submit"><a href='http://localhost:8888'>Next</a></button>
+                <button type="submit"><a href='https://boom-box-server.herokuapp.com'>Next</a></button>
                 </form>
                  
                      {this.state.isSubmitted && <Redirect to={{

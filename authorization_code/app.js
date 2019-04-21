@@ -22,6 +22,10 @@ var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
 const cool = require('cool-ascii-faces')
 
 const path = require('path')
+
+var http = require('http');
+var fs = require('fs');
+
 const PORT = process.env.PORT || 8888
 
 
@@ -43,11 +47,17 @@ var generateRandomString = function(length) {
   return text;
 };
 
+
 var stateKey = 'spotify_auth_state';
 
 var app = express();
 
 app.use(express.static(__dirname + '/public'))
+
+app.get('/', function(req,res) {
+  res.sendfile('public/index.html');
+});
+
 app.use(cors())
 app.use(cookieParser());
 
