@@ -13,7 +13,7 @@ class Home extends Component {
     render(){
         return(
             <div className="Home">
-                <h2>To Begin, Login to Spotify</h2>
+                <h2>Ready to design a playlist? Let's begin!</h2>
                    
                     
                     <li><NavLink to="/keyword">move to Keyword</NavLink></li>

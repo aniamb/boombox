@@ -34,51 +34,55 @@ class Playlist extends Component {
     componentDidMount() {
         //print out values in database
         //need to pass keyword prop to access
-        const itemsRef = base.database().ref('users');
-        itemsRef.on('value', (snapshot) => {
-          let items = snapshot.val();
-          let newState = [];
-          for (let item in items) {
-            newState.push({
-              keyword: items[item].keyword,
+        // const itemsRef = base.database().ref('users');
+        // itemsRef.once('value', (snapshot) => {
+        //   let items = snapshot.val();
+        //   let newState = [];
+        //   for (let item in items) {
+        //     newState.push({
+        //     //   privacy: items[item].privacy,
+        //       keyword: items[item].keyword,
+        //     //   danceLevel: items[item].danceLevel,
+        //     //   energyLevel: items[item].energyLevel,
+        //     //   valenceLevel: items[item].valenceLevel,
+        //     //   tempoLevel: items[item].tempoLevel,
+        //     });
+        //   }
+        //   this.setState({
+        //     allItems: newState,
+        //   });
+        // });
+        const itemsRef = base.database().ref("users/" + localStorage.getItem('keyData'));
+        // itemsRef.once("value").then(function(snapshot) {
+        itemsRef.once('value', (snapshot) => {
+            let newState = [];
+            const privacy = snapshot.child("privacy").val();
+            const keyword = snapshot.child("keyword").val();
+            const danceLevel = snapshot.child("danceLevel").val();
+            const energyLevel = snapshot.child("energyLevel").val();
+            const valenceLevel = snapshot.child("valenceLevel").val();
+            const tempoLevel = snapshot.child("tempoLevel").val();
+            newState.push(keyword,privacy,danceLevel,energyLevel,valenceLevel,tempoLevel)
+                
+            this.setState({
+                allItems: newState
             });
-          }
-          this.setState({
-            allItems: newState,
-          });
-        });
+        })
     }
 
-
-
     render(){
-        if(this.state.key!=null){
-        console.log(`localStorage key: ${this.state.key}`)
-        }
-            console.log(`localStorage dance: ${this.state.danceLevel}`)
-        if(this.state.energyLevel!=null){
-            console.log(`localStorage energy: ${this.state.energyLevel}`)
-        }
-        if(this.state.valenceLevel!=null){
-            console.log(`localStorage valence: ${this.state.valenceLevel}`)
-        }
-        if(this.state.tempoLevel!=null){
-            console.log(`localStorage tempo: ${this.state.tempoLevel}`)
-        }
-        if(this.state.privacyLevel!=null){
-            console.log(`localStorage priv: ${this.state.privacyLevel}`)
-        }
-
-
-        // console.log(`pls god let this work PLEASE: ${Keyword.keyData}`)
-        // console.log(`god pls work: ${data.danceLevel}`)
+        // const dataMap = this.state.allItems.map(function(item){
+        //     return <li> {item} </li>;
+        //   });
         return(
             <div className="Playlist">
-                BoomBox Playlist Page
+                BoomBox Playlist Page for keyword {localStorage.getItem('keyData')}
                 <ul>
-                    {this.state.allItems.map(item =>(
-                        <li>{item.keyword}</li>
-                    ))}
+                      {this.state.allItems.map(item =>(
+                        <li>{item}</li>
+                    ))}  
+                   
+                    {/* {dataMap} */}
                 </ul>
                     {/* <li><NavLink to="/valence">move to valence</NavLink></li>
                 <Switch>

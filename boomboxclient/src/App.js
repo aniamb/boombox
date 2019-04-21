@@ -73,7 +73,7 @@ class App extends Component {
             <li><NavLink to="/home">Home</NavLink></li>
             <li><NavLink to="/explore">Explore</NavLink></li>
 
-              <a href='http://localhost:8888'> Login to Spotify </a>
+              {/* <a href='http://localhost:8888'> Login to Spotify </a> */}
 
 
 
