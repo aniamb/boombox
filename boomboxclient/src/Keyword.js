@@ -3,7 +3,7 @@ import { Redirect } from 'react-router'
 
 // import Dance from "./Dance"
 import Playlist from "./Playlist"
-import base from './base'
+// import base from './base'
 // import Explore from "./Explore"
 
 class Keyword extends Component {
@@ -27,11 +27,11 @@ class Keyword extends Component {
        this.setState({isSubmitted: true})
     //    const itemsRef = base.database().ref(this.state.keyword);
     //    const itemsRef = base.database().ref('keyword');
-        const usersRef = base.database().ref('users');
-        //need to change id to be username logged in
-        usersRef.child(this.state.keyword).set({
-            keyword: this.state.keyword,
-        })  
+        // const usersRef = base.database().ref('users');
+        // //need to change id to be username logged in
+        // usersRef.child(this.state.keyword).set({
+        //     keyword: this.state.keyword,
+        // })  
     // base.database().child(this.state.keyword).setValue("test");
     //    const user = {
     //        keyword: this.state.keyword,

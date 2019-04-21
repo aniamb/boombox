@@ -5,6 +5,7 @@ import { Redirect } from 'react-router'
 // import { Link } from 'react-router-dom'
 // import Playlist from "./Playlist"
 // import Explore from "./Explore"
+import base from "./base"
 
 const options = [
     {value: 'public', label: "Public"},
@@ -26,7 +27,17 @@ class Save extends Component {
         this.setState({selectedValuePlaceholder: privacy.label})
         this.setState({
             privacy: privacy.value}, function() {
-               localStorage.setItem("privacyData", this.state.privacy);
+                /*add entire object to database*/
+                localStorage.setItem("privacyData", this.state.privacy);
+                const usersRef = base.database().ref('users');
+                usersRef.child(localStorage.getItem('keyData')).set({
+                    privacy: localStorage.getItem('privacyData'),
+                    keyword: localStorage.getItem('keyData'),
+                    danceLevel: localStorage.getItem('danceData'),
+                    energyLevel: localStorage.getItem('energyData'),
+                    valenceLevel: localStorage.getItem('valenceData'),
+                    tempoLevel: localStorage.getItem('tempoData'),
+        })
             }.bind(this));
         //localStorage.setItem("privacyData", this.state.privacy)
 
