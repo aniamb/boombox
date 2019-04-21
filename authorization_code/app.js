@@ -19,11 +19,20 @@ var client_id = '5bdc26b569de48d388e9a279f91cdc8a'; // Your client id
 var client_secret = '979e281a27854522852cc89f56f86daf'; // Your secret
 var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
 
+const cool = require('cool-ascii-faces')
+
+const path = require('path')
+const PORT = process.env.PORT || 8888
+
+
+
 /**
  * Generates a random string containing numbers and letters
  * @param  {number} length The length of the string
  * @return {string} The generated string
  */
+
+
 var generateRandomString = function(length) {
   var text = '';
   var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -39,8 +48,8 @@ var stateKey = 'spotify_auth_state';
 var app = express();
 
 app.use(express.static(__dirname + '/public'))
-   .use(cors())
-   .use(cookieParser());
+app.use(cors())
+app.use(cookieParser());
 
 app.get('/login', function(req, res) {
 
@@ -152,5 +161,11 @@ app.get('/refresh_token', function(req, res) {
   });
 });
 
+app.get("/", (req, res) =>{
+  console.log("responding to root route")
+  res.send("HI FROM ROOT!")
+
+})
+
 console.log('Listening on 8888');
-app.listen(8888);
+app.listen(PORT);
