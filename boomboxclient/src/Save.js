@@ -37,6 +37,7 @@ class Save extends Component {
                     energyLevel: localStorage.getItem('energyData'),
                     valenceLevel: localStorage.getItem('valenceData'),
                     tempoLevel: localStorage.getItem('tempoData'),
+                    username: '',
         })
             }.bind(this));
         //localStorage.setItem("privacyData", this.state.privacy)
@@ -67,7 +68,9 @@ class Save extends Component {
                 </div>
                 
                 <form  onSubmit= {this.handleSubmit} >
-                <button type="submit"><a href='https://boom-box-server.herokuapp.com'>Next</a></button>
+                {/* <button type="submit"><a href='https://boom-box-server.herokuapp.com'>Next</a></button> */}
+                <button type="submit"><a href='localhost:8888'>Next</a></button>
+
                 </form>
                  
                      {this.state.isSubmitted && <Redirect to={{

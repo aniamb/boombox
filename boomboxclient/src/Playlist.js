@@ -19,6 +19,7 @@ class Playlist extends Component {
             privacyLevel: '',
             isSubmitted: false,
             allItems: [],
+            username: ''
         }
     }
     //componentwillMount
@@ -52,6 +53,13 @@ class Playlist extends Component {
         //     allItems: newState,
         //   });
         // });
+        fetch('/playlist')
+        .then((response) => response.text())
+        .then((responseJson) =>{
+            this.setState({
+                username: responseJson.username
+            })
+        })
         const itemsRef = base.database().ref("users/" + localStorage.getItem('keyData'));
         // itemsRef.once("value").then(function(snapshot) {
         itemsRef.once('value', (snapshot) => {
@@ -74,6 +82,7 @@ class Playlist extends Component {
         // const dataMap = this.state.allItems.map(function(item){
         //     return <li> {item} </li>;
         //   });
+        console.log(`if this works imma kill someone ${this.state.username}`)
         return(
             <div className="Playlist">
                 BoomBox Playlist Page for keyword {localStorage.getItem('keyData')}
