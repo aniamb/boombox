@@ -52,6 +52,7 @@ class Playlist extends Component {
         //     allItems: newState,
         //   });
         // });
+     
         const itemsRef = base.database().ref("users/" + localStorage.getItem('keyData'));
         // itemsRef.once("value").then(function(snapshot) {
         itemsRef.once('value', (snapshot) => {
