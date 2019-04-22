@@ -19,6 +19,7 @@ class Playlist extends Component {
             privacyLevel: '',
             isSubmitted: false,
             allItems: [],
+            username: ''
         }
     }
     //componentwillMount
@@ -29,6 +30,13 @@ class Playlist extends Component {
         this.setState({valenceLevel: localStorage.getItem('valenceData')})
         this.setState({tempoLevel: localStorage.getItem('tempoData')})
         this.setState({privacyLevel: localStorage.getItem('privacyData')})
+        fetch('/playlist')
+        .then((response) => response.text())
+        .then((responseJson) =>{
+            this.setState({
+                username: responseJson.username
+            })
+        }) 
 
     }
     componentDidMount() {
@@ -52,7 +60,7 @@ class Playlist extends Component {
         //     allItems: newState,
         //   });
         // });
-     
+       
         const itemsRef = base.database().ref("users/" + localStorage.getItem('keyData'));
         // itemsRef.once("value").then(function(snapshot) {
         itemsRef.once('value', (snapshot) => {
@@ -75,6 +83,7 @@ class Playlist extends Component {
         // const dataMap = this.state.allItems.map(function(item){
         //     return <li> {item} </li>;
         //   });
+        console.log(`username: ${this.state.username}`)
         return(
             <div className="Playlist">
                 BoomBox Playlist Page for keyword {localStorage.getItem('keyData')}
