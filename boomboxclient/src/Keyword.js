@@ -51,7 +51,7 @@ class Keyword extends Component {
                     keyword: this.state.keyword,
                 }}/>}
                 {/* <Playlist keyword = {this.state.keyword}/> */}
-               {this.state.isSubmitted && <Playlist keyword={this.state.keyword}/>} 
+               {/* {this.state.isSubmitted && <Playlist keyword={this.state.keyword}/>}  */}
             </div>
         )
     }
