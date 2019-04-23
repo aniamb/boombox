@@ -16,6 +16,7 @@ import Tempo from "./Tempo"
 import Save from "./Save"
 import Playlist from "./Playlist"
 import base from "./base"
+import './App.css'
 
 const spotifyApi = new SpotifyWebApi();
 var loggedIn = 0;
@@ -68,15 +69,13 @@ class App extends Component {
 
     return (
       <div className="App">
-        <div className = "links">
-          <ul className = "navLinks">
-            <li><NavLink to="/home">Home</NavLink></li>
-            <li><NavLink to="/explore">Explore</NavLink></li>
 
-              {/* <a href='http://localhost:8888'> Login to Spotify </a> */}
-
-
-
+        <div className = "links header">
+        <h1>BOOMBOX</h1>
+          <ul className = "navLinks ">
+            <NavLink to="/home">Home</NavLink>
+            <NavLink to="/explore">Explore</NavLink>
+            {/* <a href='http://localhost:8888'> Login to Spotify </a> */}
           </ul>
         </div>
         <Switch>
