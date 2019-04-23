@@ -1,6 +1,6 @@
 import firebase from 'firebase/app'
 import 'firebase/database'
-import Rebase from 're-base'
+//import Rebase from 're-base'
 // Initialize Firebase
 const config = {
     apiKey: "AIzaSyD2-jP3vyKiZDGWu3IsiKTaagdx0R5wjDo",

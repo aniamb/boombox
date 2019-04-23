@@ -36,9 +36,14 @@ var stateKey = 'spotify_auth_state';
 
 var app = express();
 
+var login = function(callback) {
+  
+}
+
 app.use(express.static(__dirname + '/public'))
    .use(cors())
    .use(cookieParser());
+
 
 app.get('/login', function(req, res) {
 
