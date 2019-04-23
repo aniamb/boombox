@@ -14,7 +14,7 @@ class Explore extends Component {
             playlist:'',
             valence:'',
             info: [],
-            allInfo: [],
+            allInfo: this.props.items,
         }
     }
     // componentWillMount (){
@@ -22,25 +22,7 @@ class Explore extends Component {
     // }
 
     componentDidMount(){
-
-
-        // const itemsRef = base.database().ref("users");
-        // // itemsRef.once("value").then(function(snapshot) {
-        // itemsRef.once('value', (snapshot) => {
-        //     let newState = [];
-        //     // const privacy = snapshot.child("privacy").val();
-        //     const playlistName = snapshot.child("playlistName").val();
-        //     const keyword = snapshot.child("keyword").val();
-        //     const danceLevel = snapshot.child("danceLevel").val();
-        //     const energyLevel = snapshot.child("energyLevel").val();
-        //     const valenceLevel = snapshot.child("valenceLevel").val();
-        //     const tempoLevel = snapshot.child("tempoLevel").val();
-        //     newState.push(playlistName, keyword,danceLevel,energyLevel,valenceLevel,tempoLevel)
-                
-        //     this.setState({
-        //         allItems: newState
-        //     });
-        // })
+        let allTemp = [];
         const itemsRef = base.database().ref("users");
         itemsRef.once('value', snapshot => {
             snapshot.forEach(data => {
@@ -51,20 +33,19 @@ class Explore extends Component {
                     temp.push(result.val())
 
                 })
-                this.state.allInfo.push(temp)
+                allTemp.push(temp)
             })
         })
-        this.setState({
-            allInfo: this.state.allInfo
-        })
-        //console.log(this.state.allInfo)
+         this.setState({
+             allInfo: allTemp
+         }, function(){
+            localStorage.setItem("exploreInfo", JSON.stringify(this.state.allInfo));
+         })
         console.log(this.state.allInfo)
-        // return this.state.allInfo
     }
     
     render(){
-    
-        console.log(this.state.allInfo[0])
+        console.log( `test: ${this.state.allInfo}`)
 
         const { info } = this.state;
         return(
@@ -81,20 +62,17 @@ class Explore extends Component {
             ))}  
                     </ul> */}
 
-
-
-                    {/* <div>
+                     {/* <div>
                         this.state.allInfo.map((rowdata, i) =>
                           
-                                {
-                                    this.rowdata.map((subRowData,k) =>
-                                        <li>{subRowData}</li>
-                                    )
-                                }
-                           
-                        
+                            {
+                                this.rowdata.map((subRowData,k) =>
+                                    <li>{subRowData}</li>
+                                )
+                            }
+                    
                         )
-                    </div> */}
+                    </div>  */}
 
             </div>
         )
