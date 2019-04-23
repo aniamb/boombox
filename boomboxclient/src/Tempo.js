@@ -69,16 +69,16 @@ class Tempo extends Component {
                      </div>
              </div>
                 <form  onSubmit= {this.handleSubmit} >
-                <button type="submit">Next </button>
+                <button type="submit"><a href="http://localhost:8888">Next</a></button>
                 </form>
 
             
                 {/* <li><NavLink to="/save">move to save</NavLink></li>
                     <Route path="/save" component={Save}/> */}
-                {this.state.isSubmitted && <Redirect to={{
+                {/* {this.state.isSubmitted && <Redirect to={{
                     pathname: '/save',
                     tempo: this.state.tempo,
-                }}/>}
+                }}/>} */}
             </div>
         )
     }

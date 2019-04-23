@@ -16,28 +16,29 @@ class Save extends Component {
     constructor(props){
         super(props);
         this.state = {
-            privacy: null,
+           // privacy: null,
+            playlistName: '',
             isSubmitted: false,
-            selectedValuePlaceholder: "Select",
+            //selectedValuePlaceholder: "Select",
         }
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-    handleChange = (privacy)  => {
+    handleChange = (ev)  => {
         //console.log(`test123 ${privacy.value}`)
-        this.setState({selectedValuePlaceholder: privacy.label})
+        //this.setState({selectedValuePlaceholder: privacy.label})
         this.setState({
-            privacy: privacy.value}, function() {
+            playlistName: ev.target.value }, function() {
                 /*add entire object to database*/
-                localStorage.setItem("privacyData", this.state.privacy);
-                const usersRef = base.database().ref('users');
-                usersRef.child(localStorage.getItem('keyData')).set({
-                    privacy: localStorage.getItem('privacyData'),
-                    keyword: localStorage.getItem('keyData'),
-                    danceLevel: localStorage.getItem('danceData'),
-                    energyLevel: localStorage.getItem('energyData'),
-                    valenceLevel: localStorage.getItem('valenceData'),
-                    tempoLevel: localStorage.getItem('tempoData'),
-        })
+                localStorage.setItem("playlistName", this.state.playlistName);
+                // const usersRef = base.database().ref('users');
+                // usersRef.child(localStorage.getItem('playlistName')).set({
+                //     playlistName: localStorage.getItem('playlistName'),
+                //     keyword: localStorage.getItem('keyData'),
+                //     danceLevel: localStorage.getItem('danceData'),
+                //     energyLevel: localStorage.getItem('energyData'),
+                //     valenceLevel: localStorage.getItem('valenceData'),
+                //     tempoLevel: localStorage.getItem('tempoData'),
+        // })
             }.bind(this));
         //localStorage.setItem("privacyData", this.state.privacy)
 
@@ -46,33 +47,52 @@ class Save extends Component {
         ev.preventDefault()
         //console.log(`Submitted Privacy: ${this.state.privacy}`)
         this.setState({isSubmitted: true})
+        const usersRef = base.database().ref('users');
+        usersRef.child(localStorage.getItem('playlistName')).set({
+            playlistName: localStorage.getItem('playlistName'),
+            keyword: localStorage.getItem('keyData'),
+            danceLevel: localStorage.getItem('danceData'),
+            energyLevel: localStorage.getItem('energyData'),
+            valenceLevel: localStorage.getItem('valenceData'),
+            tempoLevel: localStorage.getItem('tempoData'),
+        })
      }
     render(){
         const dropStyle = {
             width: '50%',
             margin: 'auto'
         }
-        const {privacy} = this.state;
+        //const {privacy} = this.state;
 
         return(
             <div className="Save">
-                 <h3> Do you want this to be a Public or Private playlist</h3>
-                <div className="dropMenu" style = {dropStyle}>
+                 <h3> Whatcha wanna call this playlist?</h3>
+                {/* <div className="dropMenu" style = {dropStyle}>
                 <Select 
                     options={options}
                     value = {privacy}
                     placeholder = {this.state.selectedValuePlaceholder}
                     onChange={this.handleChange}
                />
-                </div>
+                </div> */}
                 
                 <form  onSubmit= {this.handleSubmit} >
-                <button type="submit"><a href='https://boom-box-server.herokuapp.com'>Next</a></button>
+                    <div>
+                         <input 
+                            type = "text"
+                            value={this.state.playlistName}
+                            onChange={this.handleChange.bind(this)}
+                            autoFocus
+                        />
+                    </div>
+                {/* <button type="submit"><a href='https://boom-box-server.herokuapp.com'>Next</a></button> */}
+                <div>
+                    <button type="submit">Next</button>
+                </div>
                 </form>
                  
                      {this.state.isSubmitted && <Redirect to={{
                     pathname: '/playlist',
-                    privacy: this.state.privacy,
                      }}/>} 
             </div>
         )

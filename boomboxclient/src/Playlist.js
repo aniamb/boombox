@@ -16,7 +16,8 @@ class Playlist extends Component {
             energyLevel: '',
             valenceLevel: '',
             tempoLevel: '',
-            privacyLevel: '',
+            playlistName: '',
+            // privacyLevel: '',
             isSubmitted: false,
             allItems: [],
             username: ''
@@ -29,14 +30,7 @@ class Playlist extends Component {
         this.setState({energyLevel: localStorage.getItem('energyData')})
         this.setState({valenceLevel: localStorage.getItem('valenceData')})
         this.setState({tempoLevel: localStorage.getItem('tempoData')})
-        this.setState({privacyLevel: localStorage.getItem('privacyData')})
-        fetch('/playlist')
-        .then((response) => response.text())
-        .then((responseJson) =>{
-            this.setState({
-                username: responseJson.username
-            })
-        }) 
+        this.setState({playlistName: localStorage.getItem('playlistName')})
 
     }
     componentDidMount() {
@@ -60,18 +54,25 @@ class Playlist extends Component {
         //     allItems: newState,
         //   });
         // });
-       
-        const itemsRef = base.database().ref("users/" + localStorage.getItem('keyData'));
+        fetch('/playlist')
+        .then((response) => response.text())
+        .then((responseJson) =>{
+            this.setState({
+                username: responseJson.username
+            })
+        })
+        const itemsRef = base.database().ref("users/" + localStorage.getItem('playlistName'));
         // itemsRef.once("value").then(function(snapshot) {
         itemsRef.once('value', (snapshot) => {
             let newState = [];
-            const privacy = snapshot.child("privacy").val();
+            // const privacy = snapshot.child("privacy").val();
+            const playlistName = snapshot.child("playlistName").val();
             const keyword = snapshot.child("keyword").val();
             const danceLevel = snapshot.child("danceLevel").val();
             const energyLevel = snapshot.child("energyLevel").val();
             const valenceLevel = snapshot.child("valenceLevel").val();
             const tempoLevel = snapshot.child("tempoLevel").val();
-            newState.push(keyword,privacy,danceLevel,energyLevel,valenceLevel,tempoLevel)
+            newState.push(playlistName, keyword,danceLevel,energyLevel,valenceLevel,tempoLevel)
                 
             this.setState({
                 allItems: newState
@@ -83,13 +84,13 @@ class Playlist extends Component {
         // const dataMap = this.state.allItems.map(function(item){
         //     return <li> {item} </li>;
         //   });
-        console.log(`username: ${this.state.username}`)
+        console.log(`if this works imma kill someone ${this.state.username}`)
         return(
             <div className="Playlist">
-                BoomBox Playlist Page for keyword {localStorage.getItem('keyData')}
+                <h2>{localStorage.getItem('playlistName')}</h2>
                 <ul>
                       {this.state.allItems.map(item =>(
-                        <li>{item}</li>
+                        <p>{item}</p>
                     ))}  
                    
                     {/* {dataMap} */}
