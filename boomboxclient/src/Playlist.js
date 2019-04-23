@@ -54,19 +54,19 @@ class Playlist extends Component {
         //     allItems: newState,
         //   });
         // });
-        fetch('/playlist')
-        .then((response) => response.text())
-        .then((responseJson) =>{
-            this.setState({
-                username: responseJson.username
-            })
-        })
+        // fetch('/playlist')
+        // .then((response) => response.text())
+        // .then((responseJson) =>{
+        //     this.setState({
+        //         username: responseJson.username
+        //     })
+        // })
         const itemsRef = base.database().ref("users/" + localStorage.getItem('playlistName'));
         // itemsRef.once("value").then(function(snapshot) {
         itemsRef.once('value', (snapshot) => {
             let newState = [];
             // const privacy = snapshot.child("privacy").val();
-            const playlistName = snapshot.child("playlistName").val();
+            const playlistName = snapshot.child("aaaplaylistName").val();
             const keyword = snapshot.child("keyword").val();
             const danceLevel = snapshot.child("danceLevel").val();
             const energyLevel = snapshot.child("energyLevel").val();
