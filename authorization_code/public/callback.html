@@ -1,0 +1,142 @@
+<html>
+    <head>
+        <script>
+        var client_id = '5bdc26b569de48d388e9a279f91cdc8a'; // Your client id
+        var client_secret = '979e281a27854522852cc89f56f86daf'; // Your secret
+        var access_token = (new Buffer(client_id + ':' + client_secret).toString('base64'));
+        var username = '';
+
+
+        function getUsername(callback) {
+            console.log('getUsername');
+            var url = 'https://api.spotify.com/v1/me';
+            $.ajax(url, {
+                dataType: 'json',
+                headers: {
+                    'Authorization': 'Bearer ' + access_token
+                },
+                success: function(r) {
+                    console.log('got username response', r);
+                    callback(r.id);
+                },
+                error: function(r) {
+                    callback(null);
+                }
+	        });
+        }
+
+        function createPlaylist(username, playlistName, callback) {
+            console.log('createPlaylist', username, name);
+            var url = 'https://api.spotify.com/v1/users/' +username +'/playlists';
+            $.ajax(url, {
+                method: 'POST',
+                data: JSON.stringify({
+        			'name': name,
+        			'public': true
+	        	}),
+                dataType: 'json',
+                headers: {
+                    'Authorization': 'Bearer ' + access_token,
+                    'Content-Type': 'application/json'
+                },
+                success: function(r) {
+                    console.log('create playlist response', r);
+                    callback(r.id);
+                },
+                error: function(r) {
+                    callback(null);
+                }
+            });
+        }
+
+        function searchPlaylists(username, keyword, callback) {
+            console.log('searchPlaylists', username, keyword);
+            var url = 'https://api.spotify.com/v1/search/';
+            $.ajax(url, {
+                method: 'GET',
+                data: JSON.stringify({
+        			'q': keyword,
+                    'type': 'playlist',
+                    'limit': 5
+	        	}),
+                dataType: 'json',
+                headers: {
+                    'Authorization': 'Bearer ' + access_token,
+                    'Content-Type': 'application/json'
+                },
+                success: function(r) {
+                    console.log('create playlist response', r);
+                    callback(r.id);
+                },
+                error: function(r) {
+                    callback(null);
+                }
+            });
+        }
+
+        function addTracktoPlaylists(username, playlistID, trackURI, callback) {
+            console.log('searchPlaylists', username, playlistID, trackURI);
+            var url = 'https://api.spotify.com/v1/playlists/' + playlistID + '/tracks';
+            $.ajax(url, {
+                method: 'POST',
+                data: JSON.stringify({
+        			'playlist_id': playlistID,
+                    'uris': trackURI,
+	        	}),
+                dataType: 'json',
+                headers: {
+                    'Authorization': 'Bearer ' + access_token,
+                    'Content-Type': 'application/json'
+                },
+                success: function(r) {
+                    console.log('create playlist response', r);
+                    callback(r.id);
+                },
+                error: function(r) {
+                    callback(null);
+                }
+            });
+        }
+
+        function doit() {
+            // parse hash
+            var hash = location.hash.replace(/#/g, '');
+            var all = hash.split('&');
+            var args = {};
+            console.log('all', all);
+            all.forEach(function(keyvalue) {
+                var idx = keyvalue.indexOf('=');
+                var key = keyvalue.substring(0, idx);
+                var val = keyvalue.substring(idx + 1);
+                args[key] = val;
+            });
+          //  g_name = localStorage.getItem('createplaylist-name');
+              g_name = "hello world";
+            console.log('got args', args);
+
+            if (typeof(args['access_token']) != 'undefined') {
+                // got access token
+                console.log('got access token', args['access_token']);
+                access_token = args['access_token'];
+            }
+            getUsername(function(username) {
+                console.log('got username', username);
+                //search for playlists
+                    //store playlist id
+                //search for songs in each playlist
+                    //store songs in database
+                createPlaylist(username, g_name, function(playlist) {
+                    //add songs to playlist
+                    console.log('created playlist', playlist);
+                });
+            });
+        }
+        </script>
+
+    </head>
+    <body onload="doit()">
+        <h1> check spotify yo</h1>
+        
+
+    </body>
+</html>
