@@ -98,7 +98,7 @@
             });
         }
 
-        function doit() {
+        function getSpotifyData() {
             // parse hash
             var hash = location.hash.replace(/#/g, '');
             var all = hash.split('&');
@@ -134,7 +134,7 @@
         </script>
 
     </head>
-    <body onload="doit()">
+    <body onload="getSpotifyData()">
         <h1> check spotify yo</h1>
         
 
