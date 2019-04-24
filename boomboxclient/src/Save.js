@@ -49,7 +49,7 @@ class Save extends Component {
         this.setState({isSubmitted: true})
         const usersRef = base.database().ref('users');
         usersRef.child(localStorage.getItem('playlistName')).set({
-            playlistName: localStorage.getItem('playlistName'),
+            aaaplaylistName: localStorage.getItem('playlistName'),
             keyword: localStorage.getItem('keyData'),
             danceLevel: localStorage.getItem('danceData'),
             energyLevel: localStorage.getItem('energyData'),
