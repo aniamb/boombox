@@ -15,14 +15,22 @@ class Tempo extends Component {
         }
     }
     handleChange = (value)  => {
-        this.setState({tempo: value})
+        // this.setState({tempo: value})
+        this.setState({
+            tempo: value }, function() {
+             localStorage.setItem("tempoData", this.state.tempo);
+            
+            }.bind(this));
+
+
+        
     }
     handleSubmit = (ev) => {
        ev.preventDefault()
       // console.log(`Submitted Temp: ${this.state.tempo}`)
        this.setState({isSubmitted: true})
-       localStorage.setItem("tempoData", this.state.tempo)
-
+    //    localStorage.setItem("tempoData", this.state.tempo)
+      
       // this.props.history.push(`/dance`)
     }
     render(){
