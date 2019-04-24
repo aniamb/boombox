@@ -59,33 +59,24 @@ class Explore extends Component {
 
     render(){
        const cardStyle = {
-           width: "18rem"
+           width: "18rem",
+           marginLeft: "50%",
+           columnCount: "3", 
        }
 
         return(
             <div className="Explore">
-                BoomBox Explore Page 
-
+                <h2>Check out some amazing curated playlists!</h2>
+                    <div className="row">
                      {this.state.allInfo.map(data => 
-                            //  <div>{this.format(data)}
-                            //  <p>TEST</p>
-                            //  </div>
-                            // <div className = "card" style={cardStyle}>
-                            //      <div className = "card-body">
-                            //         <div className = "card-text">{this.format(data)}</div>
-                            //     </div>
-                            // </div>
+                            <div className="col-auto mb-3">
                             <div className = "card" style={cardStyle}>
-                                    {/* <div className = "card-text">{this.format(data)}</div> */}
                                     {this.format(data)}
                            </div>
-                    //    </div>
-                            
-                        
-                        
-                        )}
+                           </div>
+                    )}
  
-
+                    </div>
 
 
             </div>

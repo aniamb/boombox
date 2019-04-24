@@ -36,31 +36,6 @@ class Playlist extends Component {
     componentDidMount() {
         //print out values in database
         //need to pass keyword prop to access
-        // const itemsRef = base.database().ref('users');
-        // itemsRef.once('value', (snapshot) => {
-        //   let items = snapshot.val();
-        //   let newState = [];
-        //   for (let item in items) {
-        //     newState.push({
-        //     //   privacy: items[item].privacy,
-        //       keyword: items[item].keyword,
-        //     //   danceLevel: items[item].danceLevel,
-        //     //   energyLevel: items[item].energyLevel,
-        //     //   valenceLevel: items[item].valenceLevel,
-        //     //   tempoLevel: items[item].tempoLevel,
-        //     });
-        //   }
-        //   this.setState({
-        //     allItems: newState,
-        //   });
-        // });
-        // fetch('/playlist')
-        // .then((response) => response.text())
-        // .then((responseJson) =>{
-        //     this.setState({
-        //         username: responseJson.username
-        //     })
-        // })
         const itemsRef = base.database().ref("users/" + localStorage.getItem('playlistName'));
         // itemsRef.once("value").then(function(snapshot) {
         itemsRef.once('value', (snapshot) => {
@@ -84,7 +59,6 @@ class Playlist extends Component {
         // const dataMap = this.state.allItems.map(function(item){
         //     return <li> {item} </li>;
         //   });
-        console.log(`if this works imma kill someone ${this.state.username}`)
         return(
             <div className="Playlist">
                 <h2>{localStorage.getItem('playlistName')}</h2>
