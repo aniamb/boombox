@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 
 // import Home from "./Home"
 import base from "./base"
+import { format } from 'url';
 
 class Explore extends Component {
     constructor(props){
@@ -14,7 +15,7 @@ class Explore extends Component {
             playlist:'',
             valence:'',
             info: [],
-            allInfo: this.props.items,
+            allInfo: [],
         }
     }
     // componentWillMount (){
@@ -35,44 +36,57 @@ class Explore extends Component {
                 })
                 allTemp.push(temp)
             })
+            this.setState({
+                allInfo: allTemp
+            })
+           console.log(this.state.allInfo)
         })
-         this.setState({
-             allInfo: allTemp
-         }, function(){
-            localStorage.setItem("exploreInfo", JSON.stringify(this.state.allInfo));
-         })
-        console.log(this.state.allInfo)
-    }
-    
-    render(){
-        console.log( `test: ${this.state.allInfo}`)
+    }   
+    format(array){
+        let head = array.shift();
+        let temp = []
+        temp.push(<div className = "card-header">{head}</div>)
+        array.map(item =>
+            temp.push(
+                <ul className = "list-group list-group-flush">
+                 <li className="list-group-item">{item}</li>
+                </ul>
+            )
+        )
+       return temp
 
-        const { info } = this.state;
+    }
+
+    render(){
+       const cardStyle = {
+           width: "18rem"
+       }
+
         return(
             <div className="Explore">
                 BoomBox Explore Page 
-                    {/* {info.map(info => (
-                        <li> {info} </li>
-                    ))} */}
 
-               {/* <table>{this.printLists()}</table> */}
-           {/* <ul>    */}
-           {/* {this.state.allInfo.map(item =>(
-                        <p>{item}</p>
-            ))}  
-                    </ul> */}
+                     {this.state.allInfo.map(data => 
+                            //  <div>{this.format(data)}
+                            //  <p>TEST</p>
+                            //  </div>
+                            // <div className = "card" style={cardStyle}>
+                            //      <div className = "card-body">
+                            //         <div className = "card-text">{this.format(data)}</div>
+                            //     </div>
+                            // </div>
+                            <div className = "card" style={cardStyle}>
+                                    {/* <div className = "card-text">{this.format(data)}</div> */}
+                                    {this.format(data)}
+                           </div>
+                    //    </div>
+                            
+                        
+                        
+                        )}
+ 
 
-                     {/* <div>
-                        this.state.allInfo.map((rowdata, i) =>
-                          
-                            {
-                                this.rowdata.map((subRowData,k) =>
-                                    <li>{subRowData}</li>
-                                )
-                            }
-                    
-                        )
-                    </div>  */}
+
 
             </div>
         )
