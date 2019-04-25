@@ -37,7 +37,7 @@ var playlisturi = '';
 
 var client_id = '5bdc26b569de48d388e9a279f91cdc8a'; // Your client id
 var client_secret = '979e281a27854522852cc89f56f86daf'; // Your secret
-var redirect_uri = 'https://boom-box-server.herokuapp.com/callback'; // Your redirect uri
+var redirect_uri = 'https://agile-meadow-13752.herokuapp.com/callback'; // Your redirect uri
 
 const cool = require('cool-ascii-faces')
 
