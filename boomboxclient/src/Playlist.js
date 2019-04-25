@@ -5,9 +5,11 @@ import React, { Component } from 'react'
 
 //import {keyData} from "./Keyword"
 // import Keyword from "./Keyword"
+
 import base from "./base"
 import "./Playlist.css"
 
+   
 class Playlist extends Component {
     constructor(props) {
         super(props);
@@ -60,9 +62,19 @@ class Playlist extends Component {
         // const dataMap = this.state.allItems.map(function(item){
         //     return <li> {item} </li>;
         //   });
-        
+      
         return(
             <div className="Playlist">
+            <div className="outer">
+                 <iframe title="Spotify Embed" 
+                        src="https://open.spotify.com/embed/user/spotify/playlist/37i9dQZF1DXcBWIGoYBM5M"
+                        width="300" height="380" 
+                        frameborder="0" 
+                        allowtransparency="true" 
+                        allow="encrypted-media"
+                        >
+                </iframe>
+            </div>
             <div className="outer">
                 <h2>{localStorage.getItem('playlistName')}</h2>
                 <ul>
