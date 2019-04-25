@@ -68,6 +68,8 @@ class App extends Component {
   render() {
     const background = {
       backgroundImage: 'url(' + require('/Users/netrapradhan/Documents/GitHub/boombox/boomboxclient/src/imgs/background4.png') + ')',
+      // backgroundImage: 'url('+{bkgdn}+')',
+
       backgroundSize: 'cover',
       
     }
