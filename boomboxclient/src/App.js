@@ -66,9 +66,13 @@ class App extends Component {
 
 
   render() {
-
+    const background = {
+      backgroundImage: 'url(' + require('/Users/netrapradhan/Documents/GitHub/boombox/boomboxclient/src/imgs/background3.png') + ')',
+      backgroundSize: 'cover',
+      
+    }
     return (
-      <div className="App">
+      <div className="App" style={background}>
 
         <div className = "links header">
         <h1>BOOMBOX</h1>

@@ -6,6 +6,7 @@ import React, { Component } from 'react'
 //import {keyData} from "./Keyword"
 // import Keyword from "./Keyword"
 import base from "./base"
+import "./Playlist.css"
 
 class Playlist extends Component {
     constructor(props) {
@@ -59,6 +60,7 @@ class Playlist extends Component {
         // const dataMap = this.state.allItems.map(function(item){
         //     return <li> {item} </li>;
         //   });
+        
         return(
             <div className="Playlist">
                 <h2>{localStorage.getItem('playlistName')}</h2>

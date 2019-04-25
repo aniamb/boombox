@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import  Slider  from 'react-rangeslider'
 import 'react-rangeslider/lib/index.css'
-
+import './Valence.css'
 // import Tempo from "./Tempo"
 
 class Valence extends Component {
@@ -31,13 +31,22 @@ class Valence extends Component {
         10: 'happyboi hours'
     } 
     const sliderStyle = {
-        width: '50%',
-        margin: 'auto',
+        width: '70%',
+        marginTop:'45px',
+        marginLeft: 'auto',
+        marginRight: 'auto'
+    }
+     const btn = {
+        marginTop: '60px',
+        fontSize: '35px',
+        color: 'rgb(30, 182, 65)',
+        border: 'none',
+        backgroundColor: '#F2F2F2'
     }
        return(
             <div className="Valence">
-                <h3>Type in a number from 1 to 10 depending 
-                    on how "positive" you want the songs
+            <div className="outer">
+                <h3>How <b>"positive"</b> do you want the songs
                 </h3>
                 {/* <form onSubmit={this.handleSubmit}>
                         <div>
@@ -67,8 +76,8 @@ class Valence extends Component {
                      </div>
                 </div>
                 <form  onSubmit= {this.handleSubmit} >
-                <button type="submit">Next </button>
-                </form>    
+                <button type="submit"  style={btn}><i className="fas fa-forward"></i></button>            
+                    </form>     
                     
             
                     {/* <li><NavLink to="/tempo">move to tempo</NavLink></li>
@@ -77,6 +86,7 @@ class Valence extends Component {
                     pathname: '/tempo',
                     valenceLevel: this.state.valenceLevel,
                 }}/>}
+                </div>
             </div>
         )
     }

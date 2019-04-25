@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import  Slider  from 'react-rangeslider'
 import 'react-rangeslider/lib/index.css'
-
+import './Energy.css'
 
 // import Valence from "./Valence"
 
@@ -32,14 +32,23 @@ class Energy extends Component {
         10: 'BANGER Vibes!'
     } 
     const sliderStyle = {
-        width: '50%',
-        margin: 'auto',
+        width: '70%',
+        marginTop:'45px',
+        marginLeft: 'auto',
+        marginRight: 'auto'
+    }
+     const btn = {
+        marginTop: '60px',
+        fontSize: '35px',
+        color: 'rgb(30, 182, 65)',
+        border: 'none',
+        backgroundColor: '#F2F2F2'
     }
        
        return(
             <div className="Energy">
-                <h3>Type in a number from 1 to 10 depending 
-                    on how energetic you want the songs
+            <div className="outer">
+                <h3>How <b>energetic</b> do you want the songs?
                 </h3>
                 {/* <form onSubmit={this.handleSubmit}>
                         <div>
@@ -69,8 +78,8 @@ class Energy extends Component {
                      </div>
                 </div>
                 <form  onSubmit= {this.handleSubmit} >
-                <button type="submit">Next </button>
-                </form>
+                <button type="submit"  style={btn}><i className="fas fa-forward"></i></button>             
+                   </form>
 
                     {/* <li><NavLink to="/valence">move to valence</NavLink></li>
                     <Route path="/valence" component={Valence}/> */}
@@ -78,6 +87,7 @@ class Energy extends Component {
                     pathname: '/valence',
                     energyLevel: this.state.energyLevel,
                 }}/>}
+                </div>
             </div>
         )
     }

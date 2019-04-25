@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import  Slider  from 'react-rangeslider'
 import 'react-rangeslider/lib/index.css'
-
+import './Tempo.css'
 // import Save from "./Save"
 
 class Tempo extends Component {
@@ -41,11 +41,25 @@ class Tempo extends Component {
         10: 'Can\'t keep up',
         } 
         const sliderStyle = {
-        width: '50%',
-        margin: 'auto',
-        } 
+            width: '70%',
+            marginTop:'45px',
+            marginLeft: 'auto',
+            marginRight: 'auto'
+        }
+         const btn = {
+            marginTop: '60px',
+            fontSize: '35px',
+            color: 'rgb(30, 182, 65)',
+            border: 'none',
+            backgroundColor: '#F2F2F2'
+        }
+        const iconhref = {
+            // zIndex: '-1', 
+            display: "inline-block"
+        }
        return(
             <div className="Tempo">
+            <div className="outer">
             <h3>Type in a number from 1 to 10 depending 
                    on how fast you want the songs
             </h3>  
@@ -77,6 +91,7 @@ class Tempo extends Component {
                      </div>
              </div>
                 <form  onSubmit= {this.handleSubmit} >
+                {/* <button type="submit"  style={btn}><a href="http://localhost:8888" style={iconhref}><i className="fas fa-forward" /></a></button>              */}
                 <button type="submit"><a href="http://localhost:8888">Next</a></button>
                 </form>
 
@@ -87,6 +102,7 @@ class Tempo extends Component {
                     pathname: '/save',
                     tempo: this.state.tempo,
                 }}/>} */}
+                </div>
             </div>
         )
     }

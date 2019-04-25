@@ -4,6 +4,7 @@ import { Redirect } from 'react-router'
 import  Slider  from 'react-rangeslider'
 // import base from "./base"
 import 'react-rangeslider/lib/index.css'
+import './Dance.css'
 
 // import Energy from "./Energy"
 // import Explore from "./Explore"
@@ -41,13 +42,22 @@ class Dance extends Component {
            10: 'Get me on my feet!'
        } 
        const sliderStyle = {
-           width: '50%',
-           margin: 'auto',
+           width: '70%',
+           marginTop:'45px',
+           marginLeft: 'auto',
+           marginRight: 'auto'
+       }
+        const btn = {
+           marginTop: '60px',
+           fontSize: '35px',
+           color: 'rgb(30, 182, 65)',
+           border: 'none',
+           backgroundColor: '#F2F2F2'
        }
        return(
             <div className="Dance">
-                <h3>Type in a number from 1 to 10 depending
-                    on how "danceable" you want the songs
+                <div className="outer">
+                <h3>How <b>"danceable"</b> do you want the songs?
                 </h3>
                 {/* <form onSubmit={this.handleSubmit}>
                         <div>
@@ -78,7 +88,7 @@ class Dance extends Component {
                      </div>
                 </div>
                 <form  onSubmit= {this.handleSubmit} >
-                <button type="submit">Next </button>
+                <button type="submit"  style={btn}><i className="fas fa-forward"></i></button>
                 </form>
                     {/* <li><NavLink to="/energy">move to energy</NavLink></li>
                     <Route path="/energy" component={Energy}/> */}
@@ -87,6 +97,7 @@ class Dance extends Component {
                     pathname: '/energy',
                     danceLevel: this.state.danceLevel,
                 }}/>}
+                </div>
             </div>
         )
     }

@@ -43,7 +43,8 @@ class Explore extends Component {
         })
     }   
     format(array){
-        let head = array.shift();
+        let head = array[0]
+        // let head = array.shift();
         let temp = []
         temp.push(<div className = "card-header">{head}</div>)
         array.map(item =>
@@ -77,7 +78,6 @@ class Explore extends Component {
                     )}
  
                     </div>
-
 
             </div>
         )
