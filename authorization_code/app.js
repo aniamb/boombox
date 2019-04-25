@@ -110,14 +110,14 @@ app.get('/callback', function(req, res) {
           headers: { 'Authorization': 'Bearer ' + access_token },
           json: true
         };
-
         // use the access token to access the Spotify Web API
         request.get(getUserInfo, function(error, response, body) {
           username = body.id;
-          console.log(username);
+          console.log(body);
+          //console.log(username);
+          
         });
 
-        
         
         playlistName = username + '\'s Playlist!';
         var createPlaylist = {
@@ -134,6 +134,25 @@ app.get('/callback', function(req, res) {
         };
 
         request.post(createPlaylist, function(error, response, body) {
+          console.log(body);
+        });
+
+        
+        var searchPlaylists = {
+          url: 'https://api.spotify.com/v1/search',
+          body: JSON.stringify({
+              'q': 'happy',
+              'type': 'playlist',
+              'limit': 5 
+          }),
+          dataType:'json',
+          headers: {
+              'Authorization': 'Bearer ' + access_token,
+              'Content-Type': 'application/json',
+          }
+        };
+
+        request.get(searchPlaylists, function(error, response, body) {
           console.log(body);
         });
 
