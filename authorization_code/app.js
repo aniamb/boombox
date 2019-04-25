@@ -65,7 +65,10 @@ app.get('/', function(req,res) {
 app.use(cors())
 app.use(cookieParser());
 
-
+app.post("http://localhost:8888/", function(request, response) {
+  console.log("MURRRR");
+  console.log(request.body); 
+});
 app.get('/login', function(req, res) {
 
   var state = generateRandomString(16);

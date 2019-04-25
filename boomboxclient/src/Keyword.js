@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 
-// import Dance from "./Dance"
-import Playlist from "./Playlist"
-// import base from './base'
-// import Explore from "./Explore"
+
+import base from './base'
 import "./Keyword.css"
+
 
 class Keyword extends Component {
     constructor(props) {
@@ -21,10 +20,18 @@ class Keyword extends Component {
     }
     handleSubmit = (ev) => {
        ev.preventDefault()
-       console.log(`Submitted Keyword: ${this.state.keyword}`)
        this.setState({isSubmitted: true})
-      localStorage.setItem("keyData", this.state.keyword)
-      sessionStorage.setItem("keySession", this.state.keyword)
+       localStorage.setItem("keyData", this.state.keyword)
+       
+       /*Store keywords based off time*/
+       var date = new Date();
+      const usersRef = base.database().ref('keyword');
+        let curr = date.getTime()
+        localStorage.setItem("currTime", curr)
+      usersRef.child(curr).set({
+          keyword:this.state.keyword,
+          playlistURI: '',
+      })
     }
 
     render(){
