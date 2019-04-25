@@ -1,0 +1,26 @@
+.Dance{
+    width: 100%;
+    height: 100%;
+    
+}
+.outer{
+  background: #F2F2F2;
+  border: 5px solid rgb(30, 182, 65);
+  border-radius: 50px;
+  padding: 20px; 
+  width: 30%;
+  height: 60%;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 10px 10px 5px #4B4B4B;
+}
+.rangeslider-horizontal .rangeslider__fill{
+    background-color: rgb(34, 168, 65);
+}
+.rangeslider__label-item{
+    width: 80px;
+}
+.fa-forward:hover{
+    color: rgb(30, 182, 65);
+} 

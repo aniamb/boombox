@@ -5,6 +5,7 @@ import { Redirect } from 'react-router'
 import Playlist from "./Playlist"
 // import base from './base'
 // import Explore from "./Explore"
+import "./Keyword.css"
 
 class Keyword extends Component {
     constructor(props) {
@@ -26,8 +27,16 @@ class Keyword extends Component {
     }
 
     render(){
+         const btn = {
+           marginTop: '60px',
+           fontSize: '35px',
+           color: 'rgb(30, 182, 65)',
+           border: 'none',
+           backgroundColor: '#F2F2F2'
+       }
         return(
             <div className="Keyword">
+                <div className = "outer">
                 <h3>Type in a Keyword to Search</h3>
                 <form onSubmit={this.handleSubmit}>
                         <div>
@@ -39,7 +48,7 @@ class Keyword extends Component {
                             />
                         </div>
                     <div>
-                        <button type="submit">Next </button>
+                        <button type="submit"  style={btn}><i className="fas fa-forward"></i></button>
                     </div>
                    </form>
                 {/* {this.state.isSubmitted && <Dance keyword={this.state.keyword}/>}  */}
@@ -52,6 +61,7 @@ class Keyword extends Component {
                 }}/>}
                 {/* <Playlist keyword = {this.state.keyword}/> */}
                {/* {this.state.isSubmitted && <Playlist keyword={this.state.keyword}/>}  */}
+            </div>
             </div>
         )
     }

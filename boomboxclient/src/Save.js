@@ -6,6 +6,7 @@ import { Redirect } from 'react-router'
 // import Playlist from "./Playlist"
 // import Explore from "./Explore"
 import base from "./base"
+import "./Save.css"
 
 const options = [
     {value: 'public', label: "Public"},
@@ -62,10 +63,18 @@ class Save extends Component {
             width: '50%',
             margin: 'auto'
         }
+        const btn = {
+            marginTop: '60px',
+            fontSize: '35px',
+            color: 'rgb(30, 182, 65)',
+            border: 'none',
+            backgroundColor: '#F2F2F2'
+        }
         //const {privacy} = this.state;
 
         return(
             <div className="Save">
+            <div className="outer">
                  <h3> Whatcha wanna call this playlist?</h3>
                 {/* <div className="dropMenu" style = {dropStyle}>
                 <Select 
@@ -87,13 +96,13 @@ class Save extends Component {
                     </div>
                 {/* <button type="submit"><a href='https://boom-box-server.herokuapp.com'>Next</a></button> */}
                 <div>
-                    <button type="submit">Next</button>
-                </div>
+                <button type="submit"  style={btn}><i className="fas fa-forward"></i></button>                </div>
                 </form>
                  
                      {this.state.isSubmitted && <Redirect to={{
                     pathname: '/playlist',
                      }}/>} 
+            </div>
             </div>
         )
     }

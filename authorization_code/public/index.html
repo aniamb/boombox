@@ -4,6 +4,7 @@
     <script type="text/javascript" src="app.js"></script>
     <title> Login to Spotify</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <style type="text/css">
 
       .text-overflow {
@@ -12,14 +13,35 @@
         white-space: nowrap;
         width: 500px;
       }
+      .html{
+        height: 100vh;
+        width: 100%;
+      }
+      .outer{
+        background: #F2F2F2;
+        border: 5px solid rgb(30, 182, 65);
+        border-radius: 50px;
+        padding: 20px; 
+        width: 35%;
+        height: 80%;
+        margin-top: 40px;
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow: 10px 10px 5px #4B4B4B;
+      }
+     
+      
     </style>
   </head>
 
   <body>
-    <div class="container">
-        <h1> To create your playlist, Login to Spotify. </h1>
+    <div class="container outer">
+        <h3> To create your playlist, login to Spotify. </h3 >
       <div id="login">
-       <a href="/login" class="btn btn-primary">Log in with Spotify</a>
+       <!-- <a href="/login" class="btn btn-primary">Log in with Spotify</a> -->
+       <a href="/login" id ="Spotbtn" class=" btn btn-default btn-rounded btn-success">Log in with Spotify</a>
+       <!-- <a href="/login" id="btn" class="fab fa-spotify"></a> -->
+
       </div>
       <div id="loggedin">
         <div id="user-profile">

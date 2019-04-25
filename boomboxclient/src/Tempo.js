@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import  Slider  from 'react-rangeslider'
 import 'react-rangeslider/lib/index.css'
-
+import './Tempo.css'
 // import Save from "./Save"
 
 class Tempo extends Component {
@@ -41,13 +41,25 @@ class Tempo extends Component {
         10: 'Can\'t keep up',
         } 
         const sliderStyle = {
-        width: '50%',
-        margin: 'auto',
-        } 
+            width: '70%',
+            marginTop:'45px',
+            marginLeft: 'auto',
+            marginRight: 'auto'
+        }
+         const btn = {
+            marginTop: '60px',
+            fontSize: '35px',
+            color: 'rgb(30, 182, 65)'
+           
+        }
+        const regbtn = {
+            border: 'none',
+            backgroundColor: '#F2F2F2'
+        }
        return(
             <div className="Tempo">
-            <h3>Type in a number from 1 to 10 depending 
-                   on how fast you want the songs
+            <div className="outer">
+            <h3>How <b>fast</b> do you want the songs?
             </h3>  
             {/* <form onSubmit={this.handleSubmit}>
                         <div>
@@ -77,7 +89,8 @@ class Tempo extends Component {
                      </div>
              </div>
                 <form  onSubmit= {this.handleSubmit} >
-                <button type="submit"><a href="http://localhost:8888">Next</a></button>
+                {/* <button type="submit"  style={btn}><a href="http://localhost:8888" style={iconhref}><i className="fas fa-forward" /></a></button>              */}
+                <button type="submit"  style={regbtn}><a href="http://localhost:8888" className="fas fa-forward" style={btn}></a></button>
                 </form>
 
             
@@ -87,6 +100,7 @@ class Tempo extends Component {
                     pathname: '/save',
                     tempo: this.state.tempo,
                 }}/>} */}
+                </div>
             </div>
         )
     }
