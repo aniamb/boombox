@@ -21,6 +21,7 @@ var username = '';
 var username1 = new EventEmitter();
 var playlistId = ''; 
 var playlistId1 = new EventEmitter();
+var playlistId2 = '';
 var playlistName = '';
 var searchingPlay = new EventEmitter();
 var playlistIds = [5];
@@ -122,7 +123,7 @@ app.get('/callback', function(req, res) {
 
         //SEARCH FOR PLAYLISTS
         var searchPlaylists = {
-          url: 'https://api.spotify.com/v1/search?q=happy&type=playlist&limit=5',
+          url: 'https://api.spotify.com/v1/search?q=sad&type=playlist&limit=5',
           headers: {
               'Authorization': 'Bearer ' + access_token,
               'Content-Type': 'application/json',
@@ -272,9 +273,8 @@ app.get('/callback', function(req, res) {
             }
           });
         
-        });
+        
 
-        console.log('hi: ' +songURIs[0]);
 
         //GET USER INFORMATION
         var getUserInfo = {
@@ -297,53 +297,55 @@ app.get('/callback', function(req, res) {
           username = username1.body;
 
           //CREATE PLAYLIST
-          playlistName = username + '\'s Playlist!';
-          var createPlaylist = {
-            
-            url: 'https://api.spotify.com/v1/users/' + username+  '/playlists',
-            body: JSON.stringify({
-                'name': playlistName,
-                'public': true
-            }),
-            dataType:'json',
-            headers: {
-                'Authorization': 'Bearer ' + access_token,
-                'Content-Type': 'application/json',
-            }
-          };
-  
-          request.post(createPlaylist, function(error, response, body) {
-            console.log(body);
-            playlistId1.body = body;
-            playlistId1.emit('update')
-          });
-
-          playlistId1.on('update', function() {
-            playlistId = JSON.parse(playlistId1.body);
-
-            //ADD TRACKS TO PLAYLIST
-            var addTrack = {
-              url: 'https://api.spotify.com/v1/playlists/' + playlistId.id + '/tracks',
+            playlistName = username + '\'s Playlist!';
+            var createPlaylist = {
+              
+              url: 'https://api.spotify.com/v1/users/' + username+  '/playlists',
               body: JSON.stringify({
-                'uris': [songURIs[0],songURIs[1]]
-
+                  'name': playlistName,
+                  'public': true
               }),
-              dataType: 'json',
+              dataType:'json',
               headers: {
                   'Authorization': 'Bearer ' + access_token,
                   'Content-Type': 'application/json',
               }
             };
-
-            request.post(addTrack, function(error, response, body) {
-              console.log('track-added');
+    
+            request.post(createPlaylist, function(error, response, body) {
               console.log(body);
+              playlistId1.body = body;
+              playlistId1.emit('update')
+            });
+
+          playlistId1.on('update', function() {
+              playlistId = JSON.parse(playlistId1.body);
+              playlistId2 = playlistId.id;
+              
+
+              //ADD TRACKS TO PLAYLIST
+              var addTrack = {
+                url: 'https://api.spotify.com/v1/playlists/' + playlistId.id + '/tracks',
+                body: JSON.stringify({
+                  'uris': [songURIs[0], songURIs[1],songURIs[2],songURIs[3],songURIs[4],songURIs[5],songURIs[6],songURIs[7],songURIs[8],songURIs[9],songURIs[10], songURIs[11],songURIs[12],songURIs[13],songURIs[14],songURIs[15],songURIs[16],songURIs[17],songURIs[18],songURIs[19],songURIs[20],songURIs[21],songURIs[22],songURIs[23],songURIs[24]]
+
+                }),
+                dataType: 'json',
+                headers: {
+                    'Authorization': 'Bearer ' + access_token,
+                    'Content-Type': 'application/json',
+                }
+              };
+
+              request.post(addTrack, function(error, response, body) {
+                console.log('track-added');
+                console.log(body);
             });
           });
         });
-          
-
-        
+      });
+      
+               
         // we can also pass the token to the browser to make requests from there
         res.redirect('http://localhost:3000/playlist/#' +
           querystring.stringify({
