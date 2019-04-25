@@ -63,6 +63,7 @@ class Playlist extends Component {
         
         return(
             <div className="Playlist">
+            <div className="outer">
                 <h2>{localStorage.getItem('playlistName')}</h2>
                 <ul>
                       {this.state.allItems.map(item =>(
@@ -75,6 +76,7 @@ class Playlist extends Component {
                 <Switch>
                     <Route path="/valence" component={Valence}/>
                 </Switch> */}
+            </div>
             </div>
         )
     }

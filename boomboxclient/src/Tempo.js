@@ -49,19 +49,17 @@ class Tempo extends Component {
          const btn = {
             marginTop: '60px',
             fontSize: '35px',
-            color: 'rgb(30, 182, 65)',
+            color: 'rgb(30, 182, 65)'
+           
+        }
+        const regbtn = {
             border: 'none',
             backgroundColor: '#F2F2F2'
-        }
-        const iconhref = {
-            // zIndex: '-1', 
-            display: "inline-block"
         }
        return(
             <div className="Tempo">
             <div className="outer">
-            <h3>Type in a number from 1 to 10 depending 
-                   on how fast you want the songs
+            <h3>How <b>fast</b> do you want the songs?
             </h3>  
             {/* <form onSubmit={this.handleSubmit}>
                         <div>
@@ -92,7 +90,7 @@ class Tempo extends Component {
              </div>
                 <form  onSubmit= {this.handleSubmit} >
                 {/* <button type="submit"  style={btn}><a href="http://localhost:8888" style={iconhref}><i className="fas fa-forward" /></a></button>              */}
-                <button type="submit"><a href="http://localhost:8888">Next</a></button>
+                <button type="submit"  style={regbtn}><a href="http://localhost:8888" className="fas fa-forward" style={btn}></a></button>
                 </form>
 
             
