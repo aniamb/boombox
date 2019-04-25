@@ -16,6 +16,7 @@ var SpotifyWebApi = require('spotify-web-api-node');
 var spotifyApiNode = new SpotifyWebApi();
 var username = 'aambalavanan';
 var playlistName = '';
+var playlistId = '';
 
 
 var client_id = '5bdc26b569de48d388e9a279f91cdc8a'; // Your client id
@@ -120,7 +121,7 @@ app.get('/callback', function(req, res) {
         });
 
         var searchPlaylists = {
-          url: 'https://api.spotify.com/v1/search?q=happy&type=playlist&limit=5',
+          url: 'https://api.spotify.com/v1/search?q=happy&type=playlist&limit=1',
           headers: {
               'Authorization': 'Bearer ' + access_token,
               'Content-Type': 'application/json',
@@ -148,9 +149,31 @@ app.get('/callback', function(req, res) {
           }
         };
 
+        
         request.post(createPlaylist, function(error, response, body) {
+          playlistId = body.id;
           console.log(body);
+          request.cookie(playlistId, body.id).send('cookie sent');
+          console.log(document.cookie);
         });
+
+        // var addTrack = {
+        //   url: 'https://api.spotify.com/v1/playlists/' + playlistId + '/tracks',
+        //   body: JSON.stringify({
+        //       'uris': 'spotify:track:0i0wnv9UoFdZ5MfuFGQzMy'
+        //   }),
+        //   dataType:'json',
+        //   headers: {
+        //       'Authorization': 'Bearer ' + access_token,
+        //       'Content-Type': 'application/json',
+        //   }
+        // };
+
+        // request.post(addTrack, function(error, response, body) {
+        //   console.log('track-added');
+        //   console.log(body);
+        // });
+
 
 
         // we can also pass the token to the browser to make requests from there
