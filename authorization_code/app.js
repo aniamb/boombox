@@ -19,10 +19,12 @@ var localStorage = new LocalStorage('./scratch');
 var EventEmitter = require("events").EventEmitter;
 var username = '';
 var username1 = new EventEmitter();
-var playlistId = '';
-var playlistId2 = '';
+var playlistId = ''; 
 var playlistId1 = new EventEmitter();
 var playlistName = '';
+var searchingPlay = new EventEmitter();
+var playlistURI = [4];
+var playlisturi = '';
 
 
 
@@ -112,7 +114,7 @@ app.get('/callback', function(req, res) {
         var access_token = body.access_token,
             refresh_token = body.refresh_token;
 
-
+        //GET USER INFORMATION
         var getUserInfo = {
           //request specific information here
           url: 'https://api.spotify.com/v1/me',
@@ -132,6 +134,7 @@ app.get('/callback', function(req, res) {
         username1.on('update', function () {
           username = username1.body;
 
+          //CREATE PLAYLIST
           playlistName = username + '\'s Playlist!';
           var createPlaylist = {
             
@@ -155,9 +158,8 @@ app.get('/callback', function(req, res) {
 
           playlistId1.on('update', function() {
             playlistId = JSON.parse(playlistId1.body);
-            playlistId2 = playlistId.id;
 
-
+            //ADD TRACKS TO PLAYLIST
             var addTrack = {
               url: 'https://api.spotify.com/v1/playlists/' + playlistId.id + '/tracks',
               body: JSON.stringify({
@@ -178,8 +180,9 @@ app.get('/callback', function(req, res) {
           });
         });
           
+        //SEARCH FOR PLAYLISTS
         var searchPlaylists = {
-          url: 'https://api.spotify.com/v1/search?q=happy&type=playlist&limit=1',
+          url: 'https://api.spotify.com/v1/search?q=happy&type=playlist&limit=5',
           headers: {
               'Authorization': 'Bearer ' + access_token,
               'Content-Type': 'application/json',
@@ -188,8 +191,19 @@ app.get('/callback', function(req, res) {
         };
 
         request.get(searchPlaylists, function(error, response, body) {
-          console.log("SEARCHING...");
-          console.log(body);
+          //console.log(body);
+          searchingPlay.body = body;
+          searchingPlay.emit('update')
+        });
+
+        searchingPlay.on('update', function(){
+          playlistURI[0] = (searchingPlay.body.playlists.items[0].uri);
+          playlistURI[1] = (searchingPlay.body.playlists.items[1].uri);
+          playlistURI[2] = (searchingPlay.body.playlists.items[2].uri);
+          playlistURI[3] = (searchingPlay.body.playlists.items[3].uri);
+          playlistURI[4] = (searchingPlay.body.playlists.items[4].uri);
+
+          //console.log(playlisturi.)
         });
 
 
