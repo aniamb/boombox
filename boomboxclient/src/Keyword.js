@@ -24,6 +24,7 @@ class Keyword extends Component {
        console.log(`Submitted Keyword: ${this.state.keyword}`)
        this.setState({isSubmitted: true})
       localStorage.setItem("keyData", this.state.keyword)
+      sessionStorage.setItem("keySession", this.state.keyword)
     }
 
     render(){
