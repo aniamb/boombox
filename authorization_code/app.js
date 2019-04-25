@@ -23,7 +23,13 @@ var playlistId = '';
 var playlistId1 = new EventEmitter();
 var playlistName = '';
 var searchingPlay = new EventEmitter();
-var playlistURI = [4];
+var playlistIds = [5];
+var songURIs = [25];
+var searchingSongs1 = new EventEmitter();
+var searchingSongs2 = new EventEmitter();
+var searchingSongs3 = new EventEmitter();
+var searchingSongs4 = new EventEmitter();
+var searchingSongs5 = new EventEmitter();
 var playlisturi = '';
 
 
@@ -114,6 +120,162 @@ app.get('/callback', function(req, res) {
         var access_token = body.access_token,
             refresh_token = body.refresh_token;
 
+        //SEARCH FOR PLAYLISTS
+        var searchPlaylists = {
+          url: 'https://api.spotify.com/v1/search?q=happy&type=playlist&limit=5',
+          headers: {
+              'Authorization': 'Bearer ' + access_token,
+              'Content-Type': 'application/json',
+          },
+          json: true
+        };
+
+        request.get(searchPlaylists, function(error, response, body) {
+          //console.log(body);
+          searchingPlay.body = body;
+          searchingPlay.emit('update')
+        });
+
+        searchingPlay.on('update', function(){
+          playlistIds[0] = (searchingPlay.body.playlists.items[0].id);
+          playlistIds[1] = (searchingPlay.body.playlists.items[1].id);
+          playlistIds[2] = (searchingPlay.body.playlists.items[2].id);
+          playlistIds[3] = (searchingPlay.body.playlists.items[3].id);
+          playlistIds[4] = (searchingPlay.body.playlists.items[4].id);
+
+          //SEARCH FOR SONGS
+
+          var k = 0;
+
+          var searchSongs1 = {
+            url: 'https://api.spotify.com/v1/playlists/' + playlistIds[0] + '/tracks/?limit=5',
+            headers: {
+                'Authorization': 'Bearer ' + access_token,
+                'Content-Type': 'application/json',
+            },
+            json: true
+          };
+  
+          request.get(searchSongs1, function(error, response, body) {
+              //console.log(body);
+              searchingSongs1.body = body;
+              searchingSongs1.emit('update')
+          });
+  
+          searchingSongs1.on('update', function(){
+            var j = 0;
+            
+            for (j; j < 5; j++) {
+                songURIs[k] = (searchingSongs1.body.items[j].track.uri);
+                console.log(songURIs[k]);
+                k++;
+            }
+          });
+
+          var searchSongs2 = {
+            url: 'https://api.spotify.com/v1/playlists/' + playlistIds[1] + '/tracks/?limit=5',
+            headers: {
+                'Authorization': 'Bearer ' + access_token,
+                'Content-Type': 'application/json',
+            },
+            json: true
+          };
+  
+          request.get(searchSongs2, function(error, response, body) {
+              //console.log(body);
+              searchingSongs2.body = body;
+              searchingSongs2.emit('update')
+          });
+  
+          searchingSongs2.on('update', function(){
+            var j = 0;
+            
+            for (j; j < 5; j++) {
+                songURIs[k] = (searchingSongs2.body.items[j].track.uri);
+                //console.log(songURIs[k]);
+                k++;
+            }
+          });
+
+          var searchSongs3 = {
+            url: 'https://api.spotify.com/v1/playlists/' + playlistIds[2] + '/tracks/?limit=5',
+            headers: {
+                'Authorization': 'Bearer ' + access_token,
+                'Content-Type': 'application/json',
+            },
+            json: true
+          };
+  
+          request.get(searchSongs3, function(error, response, body) {
+              //console.log(body);
+              searchingSongs3.body = body;
+              searchingSongs3.emit('update')
+          });
+  
+          searchingSongs3.on('update', function(){
+            var j = 0;
+            
+            for (j; j < 5; j++) {
+                songURIs[k] = (searchingSongs3.body.items[j].track.uri);
+                //console.log(songURIs[k]);
+                k++;
+            }
+          });
+
+          var searchSongs4 = {
+            url: 'https://api.spotify.com/v1/playlists/' + playlistIds[3] + '/tracks/?limit=5',
+            headers: {
+                'Authorization': 'Bearer ' + access_token,
+                'Content-Type': 'application/json',
+            },
+            json: true
+          };
+  
+          request.get(searchSongs4, function(error, response, body) {
+              //console.log(body);
+              searchingSongs4.body = body;
+              searchingSongs4.emit('update')
+          });
+  
+          searchingSongs4.on('update', function(){
+            var j = 0;
+            
+            for (j; j < 5; j++) {
+                songURIs[k] = (searchingSongs4.body.items[j].track.uri);
+                //console.log(songURIs[k]);
+                k++;
+            }
+          });
+
+          var searchSongs5 = {
+            url: 'https://api.spotify.com/v1/playlists/' + playlistIds[4] + '/tracks/?limit=5',
+            headers: {
+                'Authorization': 'Bearer ' + access_token,
+                'Content-Type': 'application/json',
+            },
+            json: true
+          };
+  
+          request.get(searchSongs5, function(error, response, body) {
+              //console.log(body);
+              searchingSongs5.body = body;
+              searchingSongs5.emit('update')
+          });
+  
+          searchingSongs5.on('update', function(){
+            var j = 0;
+            
+            for (j; j < 5; j++) {
+                songURIs[k] = (searchingSongs5.body.items[j].track.uri);
+                //console.log(songURIs[k]);
+                k++;
+            }
+          });
+        
+        });
+
+        console.log('hi: ' +songURIs[0]);
+
         //GET USER INFORMATION
         var getUserInfo = {
           //request specific information here
@@ -163,7 +325,7 @@ app.get('/callback', function(req, res) {
             var addTrack = {
               url: 'https://api.spotify.com/v1/playlists/' + playlistId.id + '/tracks',
               body: JSON.stringify({
-                'uris': ['spotify:track:0i0wnv9UoFdZ5MfuFGQzMy']
+                'uris': [songURIs[0],songURIs[1]]
 
               }),
               dataType: 'json',
@@ -180,33 +342,8 @@ app.get('/callback', function(req, res) {
           });
         });
           
-        //SEARCH FOR PLAYLISTS
-        var searchPlaylists = {
-          url: 'https://api.spotify.com/v1/search?q=happy&type=playlist&limit=5',
-          headers: {
-              'Authorization': 'Bearer ' + access_token,
-              'Content-Type': 'application/json',
-          },
-          json: true
-        };
 
-        request.get(searchPlaylists, function(error, response, body) {
-          //console.log(body);
-          searchingPlay.body = body;
-          searchingPlay.emit('update')
-        });
-
-        searchingPlay.on('update', function(){
-          playlistURI[0] = (searchingPlay.body.playlists.items[0].uri);
-          playlistURI[1] = (searchingPlay.body.playlists.items[1].uri);
-          playlistURI[2] = (searchingPlay.body.playlists.items[2].uri);
-          playlistURI[3] = (searchingPlay.body.playlists.items[3].uri);
-          playlistURI[4] = (searchingPlay.body.playlists.items[4].uri);
-
-          //console.log(playlisturi.)
-        });
-
-
+        
         // we can also pass the token to the browser to make requests from there
         res.redirect('http://localhost:3000/playlist/#' +
           querystring.stringify({
