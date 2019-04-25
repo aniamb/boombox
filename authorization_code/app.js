@@ -114,10 +114,12 @@ app.get('/callback', function(req, res) {
         // use the access token to access the Spotify Web API
         request.get(getUserInfo, function(error, response, body) {
           username = body.id;
+          console.log(username);
         });
 
-        playlistName = 'wassup!'
-        console.log(username);
+        
+        
+        playlistName = username + '\'s Playlist!';
         var createPlaylist = {
           url: 'https://api.spotify.com/v1/users/' + username + '/playlists',
           body: JSON.stringify({
