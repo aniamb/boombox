@@ -111,11 +111,12 @@ app.get('/callback', function(req, res) {
         });
 
         // we can also pass the token to the browser to make requests from there
-        res.redirect('http://localhost:3000/playlist/#' +
-          querystring.stringify({
-            access_token: access_token,
-            refresh_token: refresh_token
-          }));
+        // res.redirect('http://localhost:3000/playlist/#' +
+        //   querystring.stringify({
+        //     access_token: access_token,
+        //     refresh_token: refresh_token
+        //   }));
+        res.redirect('http://localhost:8888/callback.html')
       } else {
         res.redirect('/#' +
           querystring.stringify({
@@ -145,11 +146,12 @@ app.get('/refresh_token', function(req, res) {
       var access_token = body.access_token;
 
       res.send({
-        'access_token': access_token
+        'access_token': access_token,
       });
     }
   });
 });
 
 console.log('Listening on 8888');
+
 app.listen(8888);
