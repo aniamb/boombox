@@ -119,23 +119,19 @@ app.get('/callback', function(req, res) {
           
         });
 
-        // var searchPlaylists = {
-        //   url: 'https://api.spotify.com/v1/search',
-        //   body: JSON.stringify({
-        //       'q': 'happy',
-        //       'type': 'playlist',
-        //       'limit': 5 
-        //   }),
-        //   dataType:'json',
-        //   headers: {
-        //       'Authorization': 'Bearer ' + access_token,
-        //       'Content-Type': 'application/json',
-        //   }
-        // };
+        var searchPlaylists = {
+          url: 'https://api.spotify.com/v1/search?q=happy&type=playlist&limit=5',
+          headers: {
+              'Authorization': 'Bearer ' + access_token,
+              'Content-Type': 'application/json',
+          },
+          json: true
+        };
 
-        // request.get(searchPlaylists, function(error, response, body) {
-        //   console.log(body);
-        // });
+        request.get(searchPlaylists, function(error, response, body) {
+          console.log("SEARCHING...");
+          console.log(body);
+        });
 
         playlistName = username + '\'s Playlist!';
         var createPlaylist = {
