@@ -14,6 +14,9 @@ var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 var SpotifyWebApi = require('spotify-web-api-node');
 var spotifyApiNode = new SpotifyWebApi();
+var username = '';
+var playlistName = '';
+
 
 var client_id = '5bdc26b569de48d388e9a279f91cdc8a'; // Your client id
 var client_secret = '979e281a27854522852cc89f56f86daf'; // Your secret
@@ -100,25 +103,25 @@ app.get('/callback', function(req, res) {
         var access_token = body.access_token,
             refresh_token = body.refresh_token;
 
-    //     var options = {
-    //       //request specific information here
-    //       url: 'https://api.spotify.com/v1/users/aambalavanan/playlists' ,
-    //       headers: { 'Authorization': 'Bearer ' + access_token },
-    //       body: JSON.stringify({name: "hello", public: true}),
-    //       dataType: 'json'
-    //  //     json: true,
-    //     };
 
-    //     // use the access token to access the Spotify Web API
-    //     request.post(options, function(error, response, body) {
-    //       console.log(body);
-    //     });
-        var username = 'aambalavanan';
-        var name = 'yeet';
-        var authOptions1 = {
+        var getUserInfo = {
+          //request specific information here
+          url: 'https://api.spotify.com/v1/me',
+          headers: { 'Authorization': 'Bearer ' + access_token },
+          json: true
+        };
+
+        // use the access token to access the Spotify Web API
+        request.get(getUserInfo, function(error, response, body) {
+          username = body.id;
+        });
+
+        playlistName = 'wassup!'
+        console.log(username);
+        var createPlaylist = {
           url: 'https://api.spotify.com/v1/users/' + username + '/playlists',
           body: JSON.stringify({
-              'name': name,
+              'name': playlistName,
               'public': true
           }),
           dataType:'json',
@@ -128,7 +131,7 @@ app.get('/callback', function(req, res) {
           }
         };
 
-        request.post(authOptions1, function(error, response, body) {
+        request.post(createPlaylist, function(error, response, body) {
           console.log(body);
         });
 
