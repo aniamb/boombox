@@ -14,9 +14,16 @@ var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 var SpotifyWebApi = require('spotify-web-api-node');
 var spotifyApiNode = new SpotifyWebApi();
-var username = 'aambalavanan';
-var playlistName = '';
+var LocalStorage = require('node-localstorage').LocalStorage;
+var localStorage = new LocalStorage('./scratch');
+var EventEmitter = require("events").EventEmitter;
+var username = '';
+var username1 = new EventEmitter();
 var playlistId = '';
+var playlistId2 = '';
+var playlistId1 = new EventEmitter();
+var playlistName = '';
+
 
 
 var client_id = '5bdc26b569de48d388e9a279f91cdc8a'; // Your client id
@@ -85,6 +92,7 @@ app.get('/callback', function(req, res) {
       }));
   } else {
     res.clearCookie(stateKey);
+
     var authOptions = {
       url: 'https://accounts.spotify.com/api/token',
       form: {
@@ -114,12 +122,62 @@ app.get('/callback', function(req, res) {
 
         // use the access token to access the Spotify Web API
         request.get(getUserInfo, function(error, response, body) {
+          // console.log('yeehaw: ' + body.id);
+          // username1 = body.id;
           console.log(body);
-          username = body.id;
-          //console.log(username);
-          
+          username1.body = body.id;
+          username1.emit('update')
         });
 
+        username1.on('update', function () {
+          username = username1.body;
+
+          playlistName = username + '\'s Playlist!';
+          var createPlaylist = {
+            
+            url: 'https://api.spotify.com/v1/users/' + username+  '/playlists',
+            body: JSON.stringify({
+                'name': playlistName,
+                'public': true
+            }),
+            dataType:'json',
+            headers: {
+                'Authorization': 'Bearer ' + access_token,
+                'Content-Type': 'application/json',
+            }
+          };
+  
+          request.post(createPlaylist, function(error, response, body) {
+            console.log(body);
+            playlistId1.body = body;
+            playlistId1.emit('update')
+          });
+
+          playlistId1.on('update', function() {
+            playlistId = JSON.parse(playlistId1.body);
+            playlistId2 = playlistId.id;
+
+
+            var addTrack = {
+              url: 'https://api.spotify.com/v1/playlists/' + playlistId.id + '/tracks',
+              body: JSON.stringify({
+                'uris': ['spotify:track:0i0wnv9UoFdZ5MfuFGQzMy']
+
+              }),
+              dataType: 'json',
+              headers: {
+                  'Authorization': 'Bearer ' + access_token,
+                  'Content-Type': 'application/json',
+              }
+            };
+
+            request.post(addTrack, function(error, response, body) {
+              console.log('track-added');
+              console.log(body);
+            });
+          });
+        });
+          
         var searchPlaylists = {
           url: 'https://api.spotify.com/v1/search?q=happy&type=playlist&limit=1',
           headers: {
@@ -133,47 +191,6 @@ app.get('/callback', function(req, res) {
           console.log("SEARCHING...");
           console.log(body);
         });
-
-        playlistName = username + '\'s Playlist!';
-        var createPlaylist = {
-          
-          url: 'https://api.spotify.com/v1/users/' + username + '/playlists',
-          body: JSON.stringify({
-              'name': playlistName,
-              'public': true
-          }),
-          dataType:'json',
-          headers: {
-              'Authorization': 'Bearer ' + access_token,
-              'Content-Type': 'application/json',
-          }
-        };
-
-        
-        request.post(createPlaylist, function(error, response, body) {
-          playlistId = body.id;
-          console.log(body);
-          request.cookie(playlistId, body.id).send('cookie sent');
-          console.log(document.cookie);
-        });
-
-        // var addTrack = {
-        //   url: 'https://api.spotify.com/v1/playlists/' + playlistId + '/tracks',
-        //   body: JSON.stringify({
-        //       'uris': 'spotify:track:0i0wnv9UoFdZ5MfuFGQzMy'
-        //   }),
-        //   dataType:'json',
-        //   headers: {
-        //       'Authorization': 'Bearer ' + access_token,
-        //       'Content-Type': 'application/json',
-        //   }
-        // };
-
-        // request.post(addTrack, function(error, response, body) {
-        //   console.log('track-added');
-        //   console.log(body);
-        // });
-
 
 
         // we can also pass the token to the browser to make requests from there
