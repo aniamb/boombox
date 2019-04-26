@@ -347,10 +347,8 @@ app.get('/callback', function(req, res) {
 
         username1.on('update', function () {
           username = username1.body;
-          const userRef = firebase.database().ref('username');
-          userRef.child("URI").set({
-            uri: 'test'
-          })
+          const userRef = firebase.database().ref('Users');
+          
 
           //CREATE PLAYLIST
             playlistName = username + '\'s Positive Playlist!';
@@ -376,7 +374,12 @@ app.get('/callback', function(req, res) {
 
           playlistId1.on('update', function() {
               playlistId = JSON.parse(playlistId1.body);
-              playlistId2 = playlistId.id;
+              playlistId2 = playlistId1.body.id;
+
+              // userRef.child(username).set({
+              //   word: positiveWords[happyWord],
+              //   uri: playlistId.uri,
+              // })
 
 
               //ADD TRACKS TO PLAYLIST
