@@ -142,7 +142,7 @@ app.get('/callback', function(req, res) {
 
         //SEARCH FOR PLAYLISTS
         var searchPlaylists = {
-          url: 'https://api.spotify.com/v1/search?q=sad&type=playlist&limit=5',
+          url: 'https://api.spotify.com/v1/search?q=hindi&type=playlist&limit=5',
           headers: {
               'Authorization': 'Bearer ' + access_token,
               'Content-Type': 'application/json',
