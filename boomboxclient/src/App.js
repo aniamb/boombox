@@ -87,9 +87,9 @@ class App extends Component {
         <div className = "links header">
         <h1>boombox</h1> 
           <ul className = "navLinks" style = {btn}>
-           <li> <NavLink to="/home" className="fas fa-home iconApp" style={margHome}></NavLink></li>
+           <li> <a href="https://agile-meadow-13752.herokuapp.com" className="fas fa-home iconApp" style={margHome}></a></li>
            
-           <li><NavLink to="/explore" className="fas fa-globe-americas iconApp"></NavLink></li>
+           <li><a href="https://boombox-1c217.firebaseapp.com/explore" className="fas fa-globe-americas iconApp"></a></li>
             {/* <a href='http://localhost:8888'> Login to Spotify </a> */}
           </ul>
 
