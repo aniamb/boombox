@@ -33,6 +33,7 @@ var searchingSongs3 = new EventEmitter();
 var searchingSongs4 = new EventEmitter();
 var searchingSongs5 = new EventEmitter();
 var playlisturi = '';
+var positiveWords = ["happy", "smile", "good", "positive", "awesome", "confidence", "energy", "fun", "wild", "fresh", "joy"];
 
 
 var client_id = '5bdc26b569de48d388e9a279f91cdc8a'; // Your client id
@@ -134,15 +135,18 @@ app.get('/callback', function(req, res) {
       json: true
     };
 
+    var happyWord = Math.floor(Math.floor(Math.random() * 11))
     request.post(authOptions, function(error, response, body) {
       if (!error && response.statusCode === 200) {
 
         var access_token = body.access_token,
             refresh_token = body.refresh_token;
 
+        
+      //  console.log('Happy Word: ' + positiveWords[happyWord]);
         //SEARCH FOR PLAYLISTS
         var searchPlaylists = {
-          url: 'https://api.spotify.com/v1/search?q=happy&type=playlist&limit=5',
+          url: 'https://api.spotify.com/v1/search?q=' + positiveWords[happyWord] + '&type=playlist&limit=5',
           headers: {
               'Authorization': 'Bearer ' + access_token,
               'Content-Type': 'application/json',
@@ -192,7 +196,7 @@ app.get('/callback', function(req, res) {
             }
           });
 
-          var random2 = Math.floor(Math.floor(Math.random() * 15));
+          var random2 = Math.floor(Math.floor(Math.random() * 20));
           var searchSongs2 = {
             url: 'https://api.spotify.com/v1/playlists/' + playlistIds[1] + '/tracks/?limit=5&offset=' + random2,
             headers: {
@@ -218,7 +222,7 @@ app.get('/callback', function(req, res) {
             }
           });
 
-          var random3 = Math.floor(Math.floor(Math.random() * 15))
+          var random3 = Math.floor(Math.floor(Math.random() * 25))
           var searchSongs3 = {
             url: 'https://api.spotify.com/v1/playlists/' + playlistIds[2] + '/tracks/?limit=5&offset=' + random3,
             headers: {
@@ -244,7 +248,7 @@ app.get('/callback', function(req, res) {
             }
           });
 
-          var random4 = Math.floor(Math.floor(Math.random() * 15))
+          var random4 = Math.floor(Math.floor(Math.random() * 30))
           var searchSongs4 = {
             url: 'https://api.spotify.com/v1/playlists/' + playlistIds[3] + '/tracks/?limit=5&offset=' + random4,
             headers: {
@@ -331,7 +335,7 @@ app.get('/callback', function(req, res) {
           username = username1.body;
 
           //CREATE PLAYLIST
-            playlistName = username + '\'s Playlist!';
+            playlistName = username + '\'s Positive Playlist!';
             var createPlaylist = {
 
               url: 'https://api.spotify.com/v1/users/' + username+  '/playlists',
