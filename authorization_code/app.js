@@ -142,7 +142,7 @@ app.get('/callback', function(req, res) {
 
         //SEARCH FOR PLAYLISTS
         var searchPlaylists = {
-          url: 'https://api.spotify.com/v1/search?q=hindi&type=playlist&limit=5',
+          url: 'https://api.spotify.com/v1/search?q=happy&type=playlist&limit=5',
           headers: {
               'Authorization': 'Bearer ' + access_token,
               'Content-Type': 'application/json',
@@ -166,9 +166,9 @@ app.get('/callback', function(req, res) {
           //SEARCH FOR SONGS
 
           var k = 0;
-
+          var random1 = Math.floor(Math.floor(Math.random() * 15))
           var searchSongs1 = {
-            url: 'https://api.spotify.com/v1/playlists/' + playlistIds[0] + '/tracks/?limit=5',
+            url: 'https://api.spotify.com/v1/playlists/' + playlistIds[0] + '/tracks/?limit=5&offset=' +random1,
             headers: {
                 'Authorization': 'Bearer ' + access_token,
                 'Content-Type': 'application/json',
@@ -192,8 +192,9 @@ app.get('/callback', function(req, res) {
             }
           });
 
+          var random2 = Math.floor(Math.floor(Math.random() * 15));
           var searchSongs2 = {
-            url: 'https://api.spotify.com/v1/playlists/' + playlistIds[1] + '/tracks/?limit=5',
+            url: 'https://api.spotify.com/v1/playlists/' + playlistIds[1] + '/tracks/?limit=5&offset=' + random2,
             headers: {
                 'Authorization': 'Bearer ' + access_token,
                 'Content-Type': 'application/json',
@@ -217,8 +218,9 @@ app.get('/callback', function(req, res) {
             }
           });
 
+          var random3 = Math.floor(Math.floor(Math.random() * 15))
           var searchSongs3 = {
-            url: 'https://api.spotify.com/v1/playlists/' + playlistIds[2] + '/tracks/?limit=5',
+            url: 'https://api.spotify.com/v1/playlists/' + playlistIds[2] + '/tracks/?limit=5&offset=' + random3,
             headers: {
                 'Authorization': 'Bearer ' + access_token,
                 'Content-Type': 'application/json',
@@ -242,8 +244,9 @@ app.get('/callback', function(req, res) {
             }
           });
 
+          var random4 = Math.floor(Math.floor(Math.random() * 15))
           var searchSongs4 = {
-            url: 'https://api.spotify.com/v1/playlists/' + playlistIds[3] + '/tracks/?limit=5',
+            url: 'https://api.spotify.com/v1/playlists/' + playlistIds[3] + '/tracks/?limit=5&offset=' + random4,
             headers: {
                 'Authorization': 'Bearer ' + access_token,
                 'Content-Type': 'application/json',
@@ -267,8 +270,9 @@ app.get('/callback', function(req, res) {
             }
           });
 
+          var random5 = Math.floor(Math.floor(Math.random() * 15))
           var searchSongs5 = {
-            url: 'https://api.spotify.com/v1/playlists/' + playlistIds[4] + '/tracks/?limit=5',
+            url: 'https://api.spotify.com/v1/playlists/' + playlistIds[4] + '/tracks/?limit=5&offset=' + random5,
             headers: {
                 'Authorization': 'Bearer ' + access_token,
                 'Content-Type': 'application/json',
