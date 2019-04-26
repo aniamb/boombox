@@ -49,6 +49,20 @@ var fs = require('fs');
 
 const PORT = process.env.PORT || 8888
 
+var firebase = require("firebase/app");
+require("firebase/auth")
+require("firebase/database")
+
+var config = {
+  apiKey: "AIzaSyD2-jP3vyKiZDGWu3IsiKTaagdx0R5wjDo",
+  authDomain: "boombox-1c217.firebaseapp.com",
+  databaseURL: "https://boombox-1c217.firebaseio.com",
+  projectId: "boombox-1c217",
+  storageBucket: "boombox.appspot.com",
+  messagingSenderId: "129261596427"
+};
+
+firebase.initializeApp(config)
 
 
 /**
@@ -333,6 +347,10 @@ app.get('/callback', function(req, res) {
 
         username1.on('update', function () {
           username = username1.body;
+          const userRef = firebase.database().ref('username');
+          userRef.child("URI").set({
+            uri: 'test'
+          })
 
           //CREATE PLAYLIST
             playlistName = username + '\'s Positive Playlist!';
