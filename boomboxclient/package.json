@@ -4,6 +4,7 @@
   "homepage": "https://boombox-1c217.firebaseapp.com",
   "private": true,
   "dependencies": {
+    "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
     "firebase": "^5.9.4",
     "firebase-tools": "^6.7.0",
