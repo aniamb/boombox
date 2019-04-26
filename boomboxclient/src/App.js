@@ -73,7 +73,7 @@ class App extends Component {
     //   backgroundSize: 'cover',
       
     // }
-    // const btn = {
+     const btn = {
       fontSize: "50px",
       marginRight: "10px"
      
