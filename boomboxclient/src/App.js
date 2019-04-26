@@ -67,7 +67,7 @@ class App extends Component {
 
   render() {
     const background = {
-      backgroundImage: 'url(' + require('/Users/netrapradhan/Documents/GitHub/boombox/boomboxclient/src/imgs/background4.png') + ')',
+      backgroundImage: 'url(' + require('/Users/netrapradhan/Documents/GitHub/boombox/boomboxclient/src/imgs/background5.jpg') + ')',
       // backgroundImage: 'url('+{bkgdn}+')',
 
       backgroundSize: 'cover',
@@ -75,15 +75,19 @@ class App extends Component {
     }
     const btn = {
       fontSize: "50px",
+      marginRight: "10px"
      
     }
+    const margHome = {
+      marginRight: "40%"
+    }
     return (
-      <div className="App" style={background}>
+      <div className="App">
 
         <div className = "links header">
-       
+        <h1>boombox</h1> 
           <ul className = "navLinks" style = {btn}>
-           <li> <NavLink to="/home" className="fas fa-home iconApp"></NavLink></li>
+           <li> <NavLink to="/home" className="fas fa-home iconApp" style={margHome}></NavLink></li>
            
            <li><NavLink to="/explore" className="fas fa-globe-americas iconApp"></NavLink></li>
             {/* <a href='http://localhost:8888'> Login to Spotify </a> */}

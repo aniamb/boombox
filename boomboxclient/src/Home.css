@@ -3,9 +3,9 @@
     height: 100%;
     
 }
-.outer{
+.outerHome{
   background: #F2F2F2;
-  border: 5px solid rgb(30, 182, 65);
+  border: 5px solid rgb(86, 141, 158);
   border-radius: 50px;
   padding: 20px; 
   width: 30%;
@@ -18,11 +18,11 @@
 .icon{
     margin-top: 100px;
     font-size: 35px;
-    color:rgb(30, 182, 65);
+    color:rgb(72, 118, 133);
       
 }
 .icon:hover{
-    color: rgb(20, 126, 45);
+    color: rgb(70, 113, 126);
 }
 /* .boom{
     width: 110px;

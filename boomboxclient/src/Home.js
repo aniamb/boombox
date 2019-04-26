@@ -20,8 +20,10 @@ class Home extends Component {
     //    }
         return(
             <div className="Home">
-                <div className = "outer">
-                 <h2>Ready to design a playlist?</h2>
+                <div className = "outerHome">
+                 <h2>Feeling down? Need a little pick me up? Let us create the perfect soundtrack to shine a little 
+                     light on your day!!
+                 </h2>
                    
                     
 {/*                    
@@ -36,7 +38,8 @@ class Home extends Component {
                    ></img> */}
 
                     {/* <button className="btn"> <NavLink to="/keyword"><i className="fas fa-forward"></i></NavLink></button> */}
-                    <NavLink to="/keyword"><i className="fas fa-forward icon"></i></NavLink>
+                    <a href="http://localhost:8888" className="fas fa-forward" alt="login"></a>
+                    {/* <NavLink to="/keyword"><i className="fas fa-forward icon"></i></NavLink> */}
                     {/* <Route path="/keyword" component={Keyword}/> */}
                     </div>
             </div>
