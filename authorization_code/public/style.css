@@ -5,8 +5,13 @@ body {
     background-color: yellow;
 }
 
+.aboutBoombox {
+    font-family: 'Yeseva One', cursive;
+    text-align: center;
+}
+
 #body-header {
-    color: rgb(30, 182, 65);
+    color: rgb(126, 126, 190);
     text-align: center;
     font-family: 'Yeseva One', cursive;
     font-size: 100px;
@@ -17,6 +22,39 @@ body {
 }
 
 #Spotbtn {
-    font-size: 40px;
-    color: rgb(30, 182, 65);
+    font-size: 50px;
+    color: rgb(126, 126, 190);
+}
+#Spotbtn:hover{
+    color: rgb(104, 104, 153);
+    text-decoration: none;
+}
+li {
+    display: inline;
+}
+
+#globe {
+    color: rgb(126, 126, 190);
+}
+
+#globe:hover {
+    color: rgb(104, 104, 153);
+    text-decoration: none;
+}
+
+#btn {
+    font-size: 50px;
+    text-align: center;
+    margin-right: 70px;
+    color: rgb(126, 126, 190);
+}
+
+#margHome {
+    color: rgb(126, 126, 190);
+    margin-right: 30%
+}
+
+#margHome:hover {
+    color: rgb(104, 104, 153);
+    text-decoration: none;
 }
