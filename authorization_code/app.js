@@ -46,6 +46,25 @@ const path = require('path')
 var http = require('http');
 var fs = require('fs');
 
+var admin = require('firebase-admin')
+var serviceAccount = require('./boombox-1c217-firebase-adminsdk-qed1w-74a7a4f142.json')
+
+// var secondary = ({
+//   credential: admin.credential.cert(serviceAccount),
+//   databaseURL: 'https://boombox-1c217.firebaseio.com'
+// });
+const secondary = {
+  apiKey: "AIzaSyD2-jP3vyKiZDGWu3IsiKTaagdx0R5wjDo",
+  authDomain: "boombox-1c217.firebaseapp.com",
+  databaseURL: "https://boombox-1c217.firebaseio.com",
+  projectId: "boombox-1c217",
+  storageBucket: "",
+  messagingSenderId: "129261596427"
+};
+
+
+var base = admin.initializeApp({secondary}, "secondary");
+
 const PORT = process.env.PORT || 8888
 
 
@@ -85,7 +104,10 @@ app.get('/', function(req,res) {
 app.use(cors())
 app.use(cookieParser());
 
-
+app.post("http://localhost:8888/", function(request, response) {
+  console.log("MURRRR");
+  console.log(request.body); 
+});
 app.get('/login', function(req, res) {
 
   var state = generateRandomString(16);
@@ -310,6 +332,16 @@ app.get('/callback', function(req, res) {
           console.log(body);
           username1.body = body.id;
           username1.emit('update')
+          // userId = body.id;
+          // displayName = body.display_name;
+          // const usersRef = base.database().ref('fromServer');
+          // let curr = date.getTime()
+          // usersRef.child(curr).set({
+          // keyword:'test',
+          // playlistURI: '',
+      })
+       
+          // window.localStorage.setItem("userID", userId);
         });
 
          //pass username to client

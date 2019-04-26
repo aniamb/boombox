@@ -68,19 +68,28 @@ class App extends Component {
   render() {
     const background = {
       backgroundImage: 'url(' + require('/Users/netrapradhan/Documents/GitHub/boombox/boomboxclient/src/imgs/background4.png') + ')',
+      // backgroundImage: 'url('+{bkgdn}+')',
+
       backgroundSize: 'cover',
       
+    }
+    const btn = {
+      fontSize: "50px",
+     
     }
     return (
       <div className="App" style={background}>
 
         <div className = "links header">
-        <h1>BOOMBOX</h1>
-          <ul className = "navLinks ">
-            <NavLink to="/home">Home</NavLink>
-            <NavLink to="/explore">Explore</NavLink>
+       
+          <ul className = "navLinks" style = {btn}>
+           <li> <NavLink to="/home" className="fas fa-home iconApp"></NavLink></li>
+           
+           <li><NavLink to="/explore" className="fas fa-globe-americas iconApp"></NavLink></li>
             {/* <a href='http://localhost:8888'> Login to Spotify </a> */}
           </ul>
+
+
         </div>
         <Switch>
           <Route path="/home" component={Home}/>

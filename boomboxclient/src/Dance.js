@@ -5,6 +5,7 @@ import  Slider  from 'react-rangeslider'
 // import base from "./base"
 import 'react-rangeslider/lib/index.css'
 import './Dance.css'
+import base from "./base"
 
 // import Energy from "./Energy"
 // import Explore from "./Explore"
@@ -18,8 +19,18 @@ class Dance extends Component {
             isSubmitted: false,
         }
     }
+    componentDidMount(){
+        /* get last added keyword */ 
+        // const usersRef = base.database().ref('keyword');
+        // usersRef.orderByChild('timestamp').limitToLast(1).on('child_added',function(snapshot) {
+        //     console.log('new record', snapshot.child("keyword").val());
+        //   });
+    }
+    
+    
+    
     handleChange = (value)  => {
-        this.setState({danceLevel: value })
+        this.setState({danceLevel: value }) 
         
     }
     handleSubmit = (ev) => {
@@ -32,6 +43,13 @@ class Dance extends Component {
     //     })
        localStorage.setItem("danceData", this.state.danceLevel/10)
       // this.props.history.push(`/dance`)
+        
+
+
+
+
+
+
     }
 
     render(){
@@ -59,18 +77,7 @@ class Dance extends Component {
                 <div className="outer">
                 <h3>How <b>"danceable"</b> do you want the songs?
                 </h3>
-                {/* <form onSubmit={this.handleSubmit}>
-                        <div>
-                            <input
-                                type = "text"
-                                value={this.state.danceLevel}
-                                onChange={this.handleChange.bind(this)}
-                            />
-                        </div>
-                    <div>
-                        <button type="submit">Next </button>
-                    </div>
-                   </form> */}
+              
 
                 <div className="slider orientation-reversed custom-labels" >
                     <div className = "slider-group" style={sliderStyle}>
