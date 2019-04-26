@@ -36,7 +36,7 @@ class Home extends Component {
                    ></img> */}
 
                     {/* <button className="btn"> <NavLink to="/keyword"><i className="fas fa-forward"></i></NavLink></button> */}
-                    <NavLink to="/keyword"><i className="fas fa-forward icon"></i></NavLink>
+
                     {/* <Route path="/keyword" component={Keyword}/> */}
                     </div>
             </div>

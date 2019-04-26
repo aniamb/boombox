@@ -315,7 +315,7 @@ app.get('/callback', function(req, res) {
         request.get(getUserInfo, function(error, response, body) {
           // console.log('yeehaw: ' + body.id);
           // username1 = body.id;
-          console.log(body);
+          //console.log(body);
           username1.body = body.id;
           username1.emit('update')
         });
@@ -351,7 +351,7 @@ app.get('/callback', function(req, res) {
             };
 
             request.post(createPlaylist, function(error, response, body) {
-              console.log(body);
+            //  console.log(body);
               playlistId1.body = body;
               playlistId1.emit('update')
             });
@@ -376,8 +376,8 @@ app.get('/callback', function(req, res) {
               };
 
               request.post(addTrack, function(error, response, body) {
-                console.log('track-added');
-                console.log(body);
+        //        console.log('track-added');
+   //             console.log(body);
             });
           });
         });

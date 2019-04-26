@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Yeseva+One');
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display');
+
+body {
+    background-color: yellow;
+}
+
+#body-header {
+    color: rgb(30, 182, 65);
+    text-align: center;
+    font-family: 'Yeseva One', cursive;
+    font-size: 100px;
+}
+
+#playlist-create {
+    font-family: 'Yeseva One', cursive;
+}
+
+#Spotbtn {
+    font-size: 40px;
+    color: rgb(30, 182, 65);
+}

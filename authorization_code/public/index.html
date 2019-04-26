@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-
+    <link rel="stylesheet" href="style.css">
     <title> Login to Spotify</title>
 
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
@@ -13,17 +13,19 @@
         text-overflow: ellipsis;
         white-space: nowrap;
         width: 500px;
+
       }
       .html{
         height: 100vh;
         width: 100%;
       }
       .outer{
-        background: #F2F2F2;
+        background:white;
         border: 5px solid rgb(30, 182, 65);
         border-radius: 50px;
         padding: 20px;
-        width: 35%;
+        text-align: center;
+        width: 40%;
         height: 80%;
         margin-top: 40px;
         margin-left: auto;
@@ -169,11 +171,12 @@
   </head>
 
   <body>
+    <h1 id="body-header"> boombox </h1>
     <div class="container outer">
-        <h3> To create your playlist, login to Spotify. </h3 >
+        <h3 id="playlist-create"> To create your playlist, login to Spotify. </h3 >
       <div id="login">
        <!-- <a href="/login" class="btn btn-primary">Log in with Spotify</a> -->
-       <a href="/login" id ="Spotbtn" class=" btn btn-default btn-rounded btn-success">Log in with Spotify</a>
+       <a href="/login" id ="Spotbtn" class=" far fa-paper-plane"></i></a>
        <!-- <a href="/login" id="btn" class="fab fa-spotify"></a> -->
 
       </div>
