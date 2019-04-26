@@ -1,0 +1,289 @@
+<!doctype html>
+<html>
+  <head>
+
+    <title> Login to Spotify</title>
+
+    <h1> To create your playlist, Login to the Spotify. </h1>
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <style type="text/css">
+
+      .text-overflow {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 500px;
+      }
+      .html{
+        height: 100vh;
+        width: 100%;
+      }
+      .outer{
+        background: #F2F2F2;
+        border: 5px solid rgb(30, 182, 65);
+        border-radius: 50px;
+        padding: 20px;
+        width: 35%;
+        height: 80%;
+        margin-top: 40px;
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow: 10px 10px 5px #4B4B4B;
+      }
+
+
+    </style>
+      <!-- <script>
+      var client_id = '5bdc26b569de48d388e9a279f91cdc8a'; // Your client id
+        var client_secret = '979e281a27854522852cc89f56f86daf'; // Your secret
+        var access_token = (new Buffer(client_id + ':' + client_secret).toString('base64'));
+        var username = '';
+
+
+        function getUsername(callback) {
+            console.log('getUsername');
+            var url = 'https://api.spotify.com/v1/me';
+            $.ajax(url, {
+                dataType: 'json',
+                headers: {
+                    'Authorization': 'Bearer ' + access_token
+                },
+                success: function(r) {
+                    console.log('got username response', r);
+                    callback(r.id);
+                },
+                error: function(r) {
+                    callback(null);
+                }
+	        });
+        }
+
+        function createPlaylist(username, playlistName, callback) {
+            console.log('createPlaylist', username, name);
+            var url = 'https://api.spotify.com/v1/users/' +username +'/playlists';
+            $.ajax(url, {
+                method: 'POST',
+                data: JSON.stringify({
+        			'name': name,
+        			'public': true
+	        	}),
+                dataType: 'json',
+                headers: {
+                    'Authorization': 'Bearer ' + access_token,
+                    'Content-Type': 'application/json'
+                },
+                success: function(r) {
+                    console.log('create playlist response', r);
+                    callback(r.id);
+                },
+                error: function(r) {
+                    callback(null);
+                }
+            });
+        }
+
+        function searchPlaylists(username, keyword, callback) {
+            console.log('searchPlaylists', username, keyword);
+            var url = 'https://api.spotify.com/v1/search/';
+            $.ajax(url, {
+                method: 'GET',
+                data: JSON.stringify({
+        			'q': keyword,
+                    'type': 'playlist',
+                    'limit': 5
+	        	}),
+                dataType: 'json',
+                headers: {
+                    'Authorization': 'Bearer ' + access_token,
+                    'Content-Type': 'application/json'
+                },
+                success: function(r) {
+                    console.log('create playlist response', r);
+                    callback(r.id);
+                },
+                error: function(r) {
+                    callback(null);
+                }
+            });
+        }
+
+        function addTracktoPlaylists(username, playlistID, trackURI, callback) {
+            console.log('searchPlaylists', username, playlistID, trackURI);
+            var url = 'https://api.spotify.com/v1/playlists/' + playlistID + '/tracks';
+            $.ajax(url, {
+                method: 'POST',
+                data: JSON.stringify({
+        			'playlist_id': playlistID,
+                    'uris': trackURI,
+	        	}),
+                dataType: 'json',
+                headers: {
+                    'Authorization': 'Bearer ' + access_token,
+                    'Content-Type': 'application/json'
+                },
+                success: function(r) {
+                    console.log('create playlist response', r);
+                    callback(r.id);
+                },
+                error: function(r) {
+                    callback(null);
+                }
+            });
+        }
+
+        function getSpotifyData() {
+            // parse hash
+            var hash = location.hash.replace(/#/g, '');
+            var all = hash.split('&');
+            var args = {};
+            console.log('all', all);
+            all.forEach(function(keyvalue) {
+                var idx = keyvalue.indexOf('=');
+                var key = keyvalue.substring(0, idx);
+                var val = keyvalue.substring(idx + 1);
+                args[key] = val;
+            });
+          //  g_name = localStorage.getItem('createplaylist-name');
+              g_name = "hello world";
+            console.log('got args', args);
+
+            if (typeof(args['access_token']) != 'undefined') {
+                // got access token
+                console.log('got access token', args['access_token']);
+                access_token = args['access_token'];
+            }
+            getUsername(function(username) {
+                console.log('got username', username);
+                //search for playlists
+                    //store playlist id
+                //search for songs in each playlist
+                    //store songs in database
+                createPlaylist(username, g_name, function(playlist) {
+                    //add songs to playlist
+                    console.log('created playlist', playlist);
+                });
+            });
+        }
+        </script>
+  -->
+  </head>
+
+  <body>
+    <div class="container outer">
+        <h3> To create your playlist, login to Spotify. </h3 >
+      <div id="login">
+       <!-- <a href="/login" class="btn btn-primary">Log in with Spotify</a> -->
+       <a href="/login" id ="Spotbtn" class=" btn btn-default btn-rounded btn-success">Log in with Spotify</a>
+       <!-- <a href="/login" id="btn" class="fab fa-spotify"></a> -->
+
+      </div>
+      <div id="loggedin">
+        <div id="user-profile">
+        </div>
+        <div id="oauth">
+        </div>
+      </div>
+    </div>
+
+    <script id="user-profile-template" type="text/x-handlebars-template">
+      <h1>Logged in as {{display_name}}</h1>
+      <div class="media">
+        <div class="pull-left">
+          <img class="media-object" width="150" src="{{images.0.url}}" />
+        </div>
+        <div class="media-body">
+          <dl class="dl-horizontal">
+            <dt>Display name</dt><dd class="clearfix">{{display_name}}</dd>
+            <dt>Id</dt><dd>{{id}}</dd>
+            <dt>Email</dt><dd>{{email}}</dd>
+            <dt>Spotify URI</dt><dd><a href="{{external_urls.spotify}}">{{external_urls.spotify}}</a></dd>
+            <dt>Link</dt><dd><a href="{{href}}">{{href}}</a></dd>
+            <dt>Profile Image</dt><dd class="clearfix"><a href="{{images.0.url}}">{{images.0.url}}</a></dd>
+            <dt>Country</dt><dd>{{country}}</dd>
+          </dl>
+        </div>
+      </div>
+    </script>
+
+    <script id="oauth-template" type="text/x-handlebars-template">
+      <h2>oAuth info</h2>
+      <dl class="dl-horizontal">
+        <dt>Access token</dt><dd class="text-overflow">{{access_token}}</dd>
+        <dt>Refresh token</dt><dd class="text-overflow">{{refresh_token}}</dd>
+      </dl>
+    </script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script>
+      (function() {
+
+        /**
+         * Obtains parameters from the hash of the URL
+         * @return Object
+         */
+        function getHashParams() {
+          var hashParams = {};
+          var e, r = /([^&;=]+)=?([^&;]*)/g,
+              q = window.location.hash.substring(1);
+          while ( e = r.exec(q)) {
+             hashParams[e[1]] = decodeURIComponent(e[2]);
+          }
+          return hashParams;
+        }
+
+        var params = getHashParams();
+
+        var access_token = params.access_token,
+            refresh_token = params.refresh_token,
+            error = params.error;
+
+        if (error) {
+          alert('There was an error during the authentication');
+        } else {
+          if (access_token) {
+            // render oauth info
+            oauthPlaceholder.innerHTML = oauthTemplate({
+              access_token: access_token,
+              refresh_token: refresh_token
+            });
+
+            $.ajax({
+                url: 'https://api.spotify.com/v1/me',
+                headers: {
+                  'Authorization': 'Bearer ' + access_token
+                },
+                success: function(response) {
+                  userProfilePlaceholder.innerHTML = userProfileTemplate(response);
+
+                  $('#login').hide();
+                  $('#loggedin').show();
+                }
+            });
+          } else {
+              // render initial screen
+              $('#login').show();
+              $('#loggedin').hide();
+          }
+
+          // document.getElementById('obtain-new-token').addEventListener('click', function() {
+          //   $.ajax({
+          //     url: '/refresh_token',
+          //     data: {
+          //       'refresh_token': refresh_token
+          //     }
+          //   }).done(function(data) {
+          //     access_token = data.access_token;
+          //     oauthPlaceholder.innerHTML = oauthTemplate({
+          //       access_token: access_token,
+          //       refresh_token: refresh_token
+          //     });
+          //   });
+          // }, false);
+        }
+      })();
+    </script>
+  </body>
+</html>
