@@ -6,7 +6,7 @@ Netra Pradhan - npradha@purdue.edu
 Anita Ambalavanan - aambalav@purdue.edu
 
 ## Project:
-boombox utilizes the Spotify API by customizing a playlist for the user based on one word (whether it be a word or artist) and a series of mood-related questions.
+boombox is a web-application that utilizes the spotify API by parsing through the Spotify playlist library and generating a unique positive-sounding playlist based on keywords.
 
 ## Technologies:
 Firebase: User and Playlist Storage
