@@ -1,15 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Yeseva+One');
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display');
+
 .Playlist{
     width: 100%;
     height: 100%;
     
 }
 .outer{
-  background: #F2F2F2;
-  border: 5px solid rgb(30, 182, 65);
+  /* background: #F2F2F2; */
+  background: white;
+  border: 5px solid rgb(126, 126, 190);
   border-radius: 50px;
   padding: 20px; 
-  width: 30%;
-  height: 60%;
+  width: 50%;
+  height: 35%;
   margin-top: 40px;
   margin-left: auto;
   margin-right: auto;
@@ -17,4 +21,27 @@
 }
 ul{
     padding: 0;
+    
 }
+
+#body-header {
+  color: rgb(126, 126, 190);
+  text-align: center;
+  font-family: 'Yeseva One', cursive;
+  font-size: 30px;
+  
+}
+
+#playlist-create {
+  font-family: 'Yeseva One', cursive;
+}
+
+#Spotbtn {
+  font-size: 40px;
+  color: rgb(126, 126, 190);
+};
+
+#Spotbtn:hover {
+  color: rgb(104,104, 153);
+}
+
