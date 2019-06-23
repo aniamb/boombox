@@ -44,8 +44,8 @@ var playlisturi = '';
 var positiveWords = ["happy", "smile", "good", "positive", "awesome", "confidence", "energy", "fun", "wild", "fresh", "joy"];
 
 
-var client_id = '5bdc26b569de48d388e9a279f91cdc8a'; // Your client id
-var client_secret = '979e281a27854522852cc89f56f86daf'; // Your secret
+var client_id =  // Your client id
+var client_secret = // Your secret
 var redirect_uri = 'https://agile-meadow-13752.herokuapp.com/callback'; // Your redirect uri
 
 const cool = require('cool-ascii-faces')
@@ -164,7 +164,7 @@ app.get('/callback', function(req, res) {
         var access_token = body.access_token,
             refresh_token = body.refresh_token;
 
-        
+
       //  console.log('Happy Word: ' + positiveWords[happyWord]);
         //SEARCH FOR PLAYLISTS
         var searchPlaylists = {
@@ -356,7 +356,7 @@ app.get('/callback', function(req, res) {
         username1.on('update', function () {
           username = username1.body;
           const userRef = firebase.database().ref('Users');
-          
+
 
           //CREATE PLAYLIST
             playlistName = username + '\'s Positive Playlist!';
